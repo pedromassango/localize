@@ -16,7 +16,14 @@ class SideBar extends StatelessWidget {
         children: [
           Logo(),
           Divider(color: Colors.black12),
-          // TODO: projects goes here
+          Expanded(
+            child: ListView(
+              children: [
+                // TODO: projects goes here
+                _AddNewProjectButton()
+              ],
+            ),
+          ),
           Spacer(),
           Divider(color: Colors.black12),
           Padding(
@@ -24,6 +31,31 @@ class SideBar extends StatelessWidget {
             child: _AccountSection(),
           ),
         ],
+      ),
+    );
+  }
+}
+
+class _AddNewProjectButton extends StatelessWidget {
+  @override
+  Widget build(BuildContext context) {
+    return SizedBox(
+      height: 50,
+      child: MaterialButton(
+        child: Row(
+          children: [
+            Padding(
+              padding: const EdgeInsets.only(right: 16),
+              child: Icon(Icons.add, color: Colors.white54),
+            ),
+            Text('New Project', style: context.textTheme.bodyText2.copyWith(
+              color: Colors.white54
+            )),
+          ],
+        ),
+        onPressed: () {
+          //TODO: start screen to create a new project
+        },
       ),
     );
   }
