@@ -9,6 +9,6 @@ class HomeModule extends ChildModule {
 
   @override
   List<Router> get routers => [
-    Router('/', child: (context, args) => HomePage()),
+    Router('/home', child: (context, args) => HomePage()),
   ];
 }

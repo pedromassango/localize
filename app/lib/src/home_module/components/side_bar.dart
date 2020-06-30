@@ -11,7 +11,7 @@ class SideBar extends StatelessWidget {
     return Container(
       width: width,
       height: context.mediaQuerySize.height,
-      color: Color(0xff3d405b),
+      color: context.primaryColor,
       child: Column(
         children: [
           Logo(),
