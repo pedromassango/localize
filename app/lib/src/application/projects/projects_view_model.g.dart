@@ -1,8 +1,3 @@
-/*
- * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 2/7/2020.
- */
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'projects_view_model.dart';
