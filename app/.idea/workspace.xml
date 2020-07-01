@@ -10,51 +10,74 @@
     <select />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="6a9b4dba-825d-44c1-b61b-6fc8a4e1f973" name="Default Changelist" comment="">
-      <change afterPath="$PROJECT_DIR$/../LICENSE" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../README.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.dart_tool/package_config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/android/app_android.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/app.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/flutter_assets/FontManifest.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/flutter_assets/NOTICES" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/flutter_assets/fonts/MaterialIcons-Regular.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/flutter_assets/packages/cupertino_icons/assets/CupertinoIcons.ttf" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/ios/Runner.build/Release-iphoneos/Runner.build/dgph" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/build/last_build_run.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/.dart_tool/package_config.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/.idea/libraries/Dart_Packages.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/.idea/libraries/Dart_SDK.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/.idea/libraries/Flutter_Plugins.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/.idea/modules.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/.idea/package.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/.packages" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/CHANGELOG.md" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/lib/localize.dart" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/localize.iml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/pubspec.lock" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/pubspec.yaml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/../package/test/localize_test.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/.metadata" beforeDir="false" />
+    <list default="true" id="6a9b4dba-825d-44c1-b61b-6fc8a4e1f973" name="Default Changelist" comment="Improved project structure &amp;&amp; add authentication page">
+      <change afterPath="$PROJECT_DIR$/lib/src/application/auth/auth_state_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.json" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/build/flutter_assets/NOTICES" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/NOTICES" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/auth_module/auth_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/auth/auth_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/global_states/auth_state_view_model.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/global_states/auth_state_view_model.g.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/home_module/components/side_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/home/widgets/side_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/home_module/home_module.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/home/home_module.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/home_module/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/home/home_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/app_logo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/common/app_logo.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/ui/circular_network_image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/common/circular_network_image.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
     <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
     <option name="LAST_RESOLUTION" value="IGNORE" />
   </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="Dart File" />
+      </list>
+    </option>
+  </component>
   <component name="Git.Settings">
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitToolBoxStore">
     <option name="projectConfigVersion" value="2" />
+    <option name="recentBranches">
+      <RecentBranches>
+        <option name="branchesForRepo">
+          <list>
+            <RecentBranchesForRepo>
+              <option name="branches">
+                <list>
+                  <RecentBranch>
+                    <option name="branchName" value="github-auth" />
+                    <option name="lastUsedInstant" value="1593535321" />
+                  </RecentBranch>
+                  <RecentBranch>
+                    <option name="branchName" value="master" />
+                    <option name="lastUsedInstant" value="1593535320" />
+                  </RecentBranch>
+                </list>
+              </option>
+              <option name="repositoryRootUrl" value="file://$PROJECT_DIR$/.." />
+            </RecentBranchesForRepo>
+          </list>
+        </option>
+      </RecentBranches>
+    </option>
   </component>
   <component name="ProjectId" id="1e0vWozRkCHMU7CzrXMrl4yEArh" />
-  <component name="ProjectLevelVcsManager" settingsEditedManually="true" />
+  <component name="ProjectLevelVcsManager" settingsEditedManually="true">
+    <ConfirmationsSetting value="1" id="Add" />
+  </component>
   <component name="ProjectViewState">
     <option name="hideEmptyMiddlePackages" value="true" />
     <option name="showLibraryContents" value="true" />
@@ -63,8 +86,32 @@
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/fonts" />
+    <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
+  </component>
+  <component name="RecentsManager">
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/assets/fonts" />
+      <recent name="$PROJECT_DIR$/lib/src/presentation/common" />
+      <recent name="$PROJECT_DIR$/lib/src/domain/auth" />
+      <recent name="$PROJECT_DIR$/lib/src/domain/core" />
+      <recent name="$PROJECT_DIR$/lib/src/domain/value_objects" />
+    </key>
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/src/presentation" />
+      <recent name="$PROJECT_DIR$/lib/src/domain/core" />
+      <recent name="$PROJECT_DIR$/lib/src/domain/value_objects" />
+      <recent name="$PROJECT_DIR$/lib/src/domain" />
+      <recent name="$PROJECT_DIR$/lib/src/presentation/home" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="main.dart" type="FlutterRunConfigurationType" factoryName="Flutter">
+      <option name="additionalArgs" value="-d chrome --web-hostname localhost --web-port 7357" />
+      <option name="filePath" value="$PROJECT_DIR$/lib/main.dart" />
+      <method v="2" />
+    </configuration>
   </component>
   <component name="SvnConfiguration">
     <configuration />
@@ -77,7 +124,39 @@
       <option name="presentableId" value="Default" />
       <updated>1593471358291</updated>
     </task>
+    <task id="LOCAL-00001" summary="Added side bar and initial home page setup">
+      <created>1593479690216</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1593479690216</updated>
+    </task>
+    <task id="LOCAL-00002" summary="(fixup) Added side bar and initial home page setup">
+      <created>1593479824696</created>
+      <option name="number" value="00002" />
+      <option name="presentableId" value="LOCAL-00002" />
+      <option name="project" value="LOCAL" />
+      <updated>1593479824696</updated>
+    </task>
+    <task id="LOCAL-00003" summary="Added projects ListView into Side bar">
+      <created>1593481372661</created>
+      <option name="number" value="00003" />
+      <option name="presentableId" value="LOCAL-00003" />
+      <option name="project" value="LOCAL" />
+      <updated>1593481372661</updated>
+    </task>
+    <task id="LOCAL-00004" summary="Improved project structure &amp;&amp; add authentication page">
+      <created>1593534915338</created>
+      <option name="number" value="00004" />
+      <option name="presentableId" value="LOCAL-00004" />
+      <option name="project" value="LOCAL" />
+      <updated>1593534915338</updated>
+    </task>
+    <option name="localTasksCounter" value="5" />
     <servers />
+  </component>
+  <component name="UpdateCopyrightCheckinHandler">
+    <option name="UPDATE_COPYRIGHT" value="true" />
   </component>
   <component name="Vcs.Log.Tabs.Properties">
     <option name="TAB_STATES">
@@ -89,43 +168,130 @@
         </entry>
       </map>
     </option>
+    <option name="oldMeFiltersMigrated" value="true" />
+  </component>
+  <component name="VcsManagerConfiguration">
+    <MESSAGE value="Added side bar and initial home page setup" />
+    <MESSAGE value="(fixup) Added side bar and initial home page setup" />
+    <MESSAGE value="Added projects ListView into Side bar" />
+    <MESSAGE value="Improved project structure &amp;&amp; add authentication page" />
+    <option name="LAST_COMMIT_MESSAGE" value="Improved project structure &amp;&amp; add authentication page" />
   </component>
   <component name="WindowStateProjectService">
-    <state width="1220" height="288" key="GridCell.Tab.0.bottom" timestamp="1593471690376">
+    <state x="-1242" y="108" width="954" height="458" key="#com.intellij.codeInsight.template.impl.EditVariableDialog" timestamp="1593531869278">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1220" height="288" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593471690376" />
-    <state width="1220" height="288" key="GridCell.Tab.0.center" timestamp="1593471690375">
+    <state x="-1242" y="108" width="954" height="458" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593531869278" />
+    <state x="-1496" y="33" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593618791228">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1220" height="288" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593471690375" />
-    <state width="1220" height="288" key="GridCell.Tab.0.left" timestamp="1593471690375">
+    <state x="-1496" y="33" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618791228" />
+    <state x="249" y="104" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615081854" />
+    <state x="444" y="291" key="#com.intellij.ide.util.MemberChooser" timestamp="1593550597580">
+      <screen x="0" y="23" width="1920" height="1127" />
+    </state>
+    <state x="-1476" y="94" key="#com.intellij.ide.util.MemberChooser/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593474957165" />
+    <state x="444" y="291" key="#com.intellij.ide.util.MemberChooser/0.23.1920.1127@0.23.1920.1127" timestamp="1593550597580" />
+    <state x="-1217" y="66" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog" timestamp="1593562110784">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1220" height="288" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593471690375" />
-    <state width="1220" height="288" key="GridCell.Tab.0.right" timestamp="1593471690376">
+    <state x="-1217" y="66" key="#com.intellij.refactoring.safeDelete.UnsafeUsagesDialog/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593562110784" />
+    <state x="-1222" y="298" key="GitCloneDialog" timestamp="1593605999507">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1220" height="288" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593471690376" />
-    <state width="1220" height="288" key="GridCell.Tab.1.bottom" timestamp="1593471690378">
+    <state x="-1222" y="298" key="GitCloneDialog/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593605999507" />
+    <state width="1003" height="245" key="GridCell.Tab.0.bottom" timestamp="1593618793549">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1220" height="288" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593471690378" />
-    <state width="1220" height="288" key="GridCell.Tab.1.center" timestamp="1593471690377">
+    <state width="1003" height="245" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793549" />
+    <state width="1003" height="309" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872460" />
+    <state width="1284" height="332" key="GridCell.Tab.0.bottom/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
+    <state width="1003" height="245" key="GridCell.Tab.0.center" timestamp="1593618793548">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1220" height="288" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593471690377" />
-    <state width="1220" height="288" key="GridCell.Tab.1.left" timestamp="1593471690377">
+    <state width="1003" height="245" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793548" />
+    <state width="1003" height="309" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872458" />
+    <state width="1284" height="332" key="GridCell.Tab.0.center/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
+    <state width="1003" height="245" key="GridCell.Tab.0.left" timestamp="1593618793547">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1220" height="288" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593471690377" />
-    <state width="1220" height="288" key="GridCell.Tab.1.right" timestamp="1593471690378">
+    <state width="1003" height="245" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793547" />
+    <state width="1003" height="309" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872458" />
+    <state width="1284" height="332" key="GridCell.Tab.0.left/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393038" />
+    <state width="1003" height="245" key="GridCell.Tab.0.right" timestamp="1593618793548">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1220" height="288" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593471690378" />
-    <state x="-1689" y="111" key="Vcs.Push.Dialog.v2" timestamp="1593471499473">
+    <state width="1003" height="245" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793548" />
+    <state width="1003" height="309" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872459" />
+    <state width="1284" height="332" key="GridCell.Tab.0.right/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
+    <state width="1003" height="245" key="GridCell.Tab.1.bottom" timestamp="1593618793461">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state x="-1689" y="111" key="Vcs.Push.Dialog.v2/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593471499473" />
+    <state width="1003" height="245" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793461" />
+    <state width="1003" height="309" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872348" />
+    <state width="1284" height="332" key="GridCell.Tab.1.bottom/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393040" />
+    <state width="1003" height="245" key="GridCell.Tab.1.center" timestamp="1593618793461">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
+    </state>
+    <state width="1003" height="245" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793461" />
+    <state width="1003" height="309" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872348" />
+    <state width="1284" height="332" key="GridCell.Tab.1.center/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393040" />
+    <state width="1003" height="245" key="GridCell.Tab.1.left" timestamp="1593618793460">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
+    </state>
+    <state width="1003" height="245" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793460" />
+    <state width="1003" height="309" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872347" />
+    <state width="1284" height="332" key="GridCell.Tab.1.left/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
+    <state width="1003" height="245" key="GridCell.Tab.1.right" timestamp="1593618793461">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
+    </state>
+    <state width="1003" height="245" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793461" />
+    <state width="1003" height="309" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872348" />
+    <state width="1284" height="332" key="GridCell.Tab.1.right/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393040" />
+    <state x="581" y="162" width="1178" height="954" key="SettingsEditor" timestamp="1593544706120">
+      <screen x="0" y="23" width="1920" height="1127" />
+    </state>
+    <state x="-1675" y="-131" width="1178" height="954" key="SettingsEditor/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593532504704" />
+    <state x="581" y="162" key="SettingsEditor/0.23.1920.1127@0.23.1920.1127" timestamp="1593544706120" />
+    <state x="-1689" y="111" key="Vcs.Push.Dialog.v2" timestamp="1593534936510">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
+    </state>
+    <state x="-1689" y="111" key="Vcs.Push.Dialog.v2/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593534936510" />
+    <state x="-1248" y="-99" width="586" height="822" key="find.popup" timestamp="1593562225591">
+      <screen x="-1920" y="-157" width="1920" height="1057" />
+    </state>
+    <state x="-1248" y="-99" width="586" height="822" key="find.popup/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593562225591" />
+    <state x="469" y="207" width="670" height="497" key="search.everywhere.popup" timestamp="1593614495465">
+      <screen x="0" y="23" width="1440" height="827" />
+    </state>
+    <state x="-1295" y="78" key="search.everywhere.popup/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593539308298" />
+    <state x="469" y="207" width="670" height="497" key="search.everywhere.popup/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593614495465" />
+    <state x="625" y="274" width="670" height="676" key="search.everywhere.popup/0.23.1920.1127@0.23.1920.1127" timestamp="1593544501057" />
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/src/presentation/home/widgets/side_bar.dart</url>
+          <line>73</line>
+          <option name="timeStamp" value="3" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart</url>
+          <line>73</line>
+          <option name="timeStamp" value="6" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart</url>
+          <line>76</line>
+          <option name="timeStamp" value="7" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" type="Dart">
+          <url>file://$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart</url>
+          <line>96</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
   </component>
 </project>
