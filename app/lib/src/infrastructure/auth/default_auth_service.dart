@@ -79,6 +79,19 @@ class DefaultAuthService extends AuthService {
     return right(unit);
   }
 
+  @override
+  Future<Either<AuthFailure, Unit>> signInAnonymously() async {
+    final AuthResult authResult = await firebaseAuth.signInAnonymously();
+    final FirebaseUser user = authResult.user;
+
+    if (user == null) {
+      return left(AuthFailure.authCanceled());
+    }
+    // TODO: check other authentication exceptions
+    print('Anonymous account created');
+    return right(unit);
+  }
+
   Future<Either<Unit, String>> _getGitHubToken() async {
     //TODO: feature locked due to: https://github.com/isaacs/github/issues/330
     throw UnimplementedError('This feature was not implemented.');

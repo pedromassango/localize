@@ -11,27 +11,22 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a9b4dba-825d-44c1-b61b-6fc8a4e1f973" name="Default Changelist" comment="Improved project structure &amp;&amp; add authentication page">
-      <change afterPath="$PROJECT_DIR$/lib/src/application/auth/auth_state_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.dart_tool/package_config.json" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.dart_tool/build/generated/app/lib/src/application/auth/auth_state_view_model.store_generator.g.part" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/build/generated/app/lib/src/application/auth/auth_state_view_model.store_generator.g.part" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.json" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/AssetManifest.json" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build/flutter_assets/NOTICES" beforeDir="false" afterPath="$PROJECT_DIR$/build/flutter_assets/NOTICES" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Debug.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" beforeDir="false" afterPath="$PROJECT_DIR$/ios/Flutter/Release.xcconfig" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/auth_module/auth_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/auth/auth_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/global_states/auth_state_view_model.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/global_states/auth_state_view_model.g.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/home_module/components/side_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/home/widgets/side_bar.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/home_module/home_module.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/home/home_module.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/home_module/home_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/home/home_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/app_logo.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/common/app_logo.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/ui/circular_network_image.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/common/circular_network_image.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test/widget_test.dart" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/web/index.html" beforeDir="false" afterPath="$PROJECT_DIR$/web/index.html" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/application/auth/auth_state_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/application/auth/auth_state_view_model.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/application/auth/auth_state_view_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/application/auth/auth_state_view_model.g.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/domain/auth/auth_facade.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/domain/auth/auth_facade.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/domain/auth/auth_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/domain/auth/auth_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/domain/core/failures.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/domain/core/failures.freezed.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/domain/core/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/domain/core/user.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/domain/core/value_objects/value_failure.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/domain/core/value_objects/value_failure.freezed.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_facade.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_facade.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/infrastructure/auth/user_mapper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/infrastructure/auth/user_mapper.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/presentation/auth/auth_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/auth/auth_page.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/presentation/core/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/core/app.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/presentation/home/widgets/side_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/home/widgets/side_bar.dart" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -86,24 +81,24 @@
     <property name="dart.analysis.tool.window.force.activate" value="true" />
     <property name="dart.analysis.tool.window.visible" value="false" />
     <property name="io.flutter.reload.alreadyRun" value="true" />
-    <property name="last_opened_file_path" value="$PROJECT_DIR$/assets/fonts" />
+    <property name="last_opened_file_path" value="$PROJECT_DIR$/lib/src/domain/core/value_objects" />
     <property name="settings.editor.selected.configurable" value="preferences.pluginManager" />
     <property name="show.migrate.to.gradle.popup" value="false" />
   </component>
   <component name="RecentsManager">
-    <key name="CopyFile.RECENT_KEYS">
-      <recent name="$PROJECT_DIR$/assets/fonts" />
-      <recent name="$PROJECT_DIR$/lib/src/presentation/common" />
-      <recent name="$PROJECT_DIR$/lib/src/domain/auth" />
-      <recent name="$PROJECT_DIR$/lib/src/domain/core" />
-      <recent name="$PROJECT_DIR$/lib/src/domain/value_objects" />
-    </key>
     <key name="MoveFile.RECENT_KEYS">
       <recent name="$PROJECT_DIR$/lib/src/presentation" />
       <recent name="$PROJECT_DIR$/lib/src/domain/core" />
       <recent name="$PROJECT_DIR$/lib/src/domain/value_objects" />
       <recent name="$PROJECT_DIR$/lib/src/domain" />
       <recent name="$PROJECT_DIR$/lib/src/presentation/home" />
+    </key>
+    <key name="CopyFile.RECENT_KEYS">
+      <recent name="$PROJECT_DIR$/lib/src/domain/core/value_objects" />
+      <recent name="$PROJECT_DIR$/assets/fonts" />
+      <recent name="$PROJECT_DIR$/lib/src/presentation/common" />
+      <recent name="$PROJECT_DIR$/lib/src/domain/auth" />
+      <recent name="$PROJECT_DIR$/lib/src/domain/core" />
     </key>
   </component>
   <component name="RunManager">
@@ -200,52 +195,52 @@
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
     <state x="-1222" y="298" key="GitCloneDialog/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593605999507" />
-    <state width="1003" height="245" key="GridCell.Tab.0.bottom" timestamp="1593618793549">
+    <state width="1234" height="283" key="GridCell.Tab.0.bottom" timestamp="1593627521359">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1003" height="245" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793549" />
+    <state width="1234" height="283" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627521359" />
     <state width="1003" height="309" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872460" />
     <state width="1284" height="332" key="GridCell.Tab.0.bottom/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
-    <state width="1003" height="245" key="GridCell.Tab.0.center" timestamp="1593618793548">
+    <state width="1234" height="283" key="GridCell.Tab.0.center" timestamp="1593627521358">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1003" height="245" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793548" />
+    <state width="1234" height="283" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627521358" />
     <state width="1003" height="309" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872458" />
     <state width="1284" height="332" key="GridCell.Tab.0.center/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
-    <state width="1003" height="245" key="GridCell.Tab.0.left" timestamp="1593618793547">
+    <state width="1234" height="283" key="GridCell.Tab.0.left" timestamp="1593627521357">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1003" height="245" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793547" />
+    <state width="1234" height="283" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627521357" />
     <state width="1003" height="309" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872458" />
     <state width="1284" height="332" key="GridCell.Tab.0.left/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393038" />
-    <state width="1003" height="245" key="GridCell.Tab.0.right" timestamp="1593618793548">
+    <state width="1234" height="283" key="GridCell.Tab.0.right" timestamp="1593627521358">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1003" height="245" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793548" />
+    <state width="1234" height="283" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627521358" />
     <state width="1003" height="309" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872459" />
     <state width="1284" height="332" key="GridCell.Tab.0.right/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
-    <state width="1003" height="245" key="GridCell.Tab.1.bottom" timestamp="1593618793461">
+    <state width="1234" height="283" key="GridCell.Tab.1.bottom" timestamp="1593627571184">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1003" height="245" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793461" />
+    <state width="1234" height="283" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627571184" />
     <state width="1003" height="309" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872348" />
     <state width="1284" height="332" key="GridCell.Tab.1.bottom/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393040" />
-    <state width="1003" height="245" key="GridCell.Tab.1.center" timestamp="1593618793461">
+    <state width="1234" height="283" key="GridCell.Tab.1.center" timestamp="1593627571173">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1003" height="245" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793461" />
+    <state width="1234" height="283" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627571173" />
     <state width="1003" height="309" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872348" />
     <state width="1284" height="332" key="GridCell.Tab.1.center/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393040" />
-    <state width="1003" height="245" key="GridCell.Tab.1.left" timestamp="1593618793460">
+    <state width="1234" height="283" key="GridCell.Tab.1.left" timestamp="1593627571169">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1003" height="245" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793460" />
+    <state width="1234" height="283" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627571169" />
     <state width="1003" height="309" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872347" />
     <state width="1284" height="332" key="GridCell.Tab.1.left/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
-    <state width="1003" height="245" key="GridCell.Tab.1.right" timestamp="1593618793461">
+    <state width="1234" height="283" key="GridCell.Tab.1.right" timestamp="1593627571178">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1003" height="245" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618793461" />
+    <state width="1234" height="283" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627571178" />
     <state width="1003" height="309" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872348" />
     <state width="1284" height="332" key="GridCell.Tab.1.right/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393040" />
     <state x="581" y="162" width="1178" height="954" key="SettingsEditor" timestamp="1593544706120">
@@ -272,11 +267,6 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/src/presentation/home/widgets/side_bar.dart</url>
-          <line>73</line>
-          <option name="timeStamp" value="3" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart</url>
           <line>73</line>
           <option name="timeStamp" value="6" />
@@ -288,7 +278,7 @@
         </line-breakpoint>
         <line-breakpoint enabled="true" type="Dart">
           <url>file://$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart</url>
-          <line>96</line>
+          <line>109</line>
           <option name="timeStamp" value="12" />
         </line-breakpoint>
       </breakpoints>

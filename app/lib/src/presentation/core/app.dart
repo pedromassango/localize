@@ -7,7 +7,6 @@ import 'package:app/src/presentation/auth/auth_page.dart';
 import 'package:app/src/application/auth/auth_state_view_model.dart';
 import 'package:app/src/presentation/home/home_page.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
 class App extends StatelessWidget {

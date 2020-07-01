@@ -71,26 +71,21 @@ class _AddNewProjectButton extends StatelessWidget {
 }
 
 class _AccountSection extends StatelessWidget {
+  final authState = Modular.get<AuthStateViewModel>();
 
   @override
   Widget build(BuildContext context) {
-    final authState = Modular.get<AuthStateViewModel>();
 
     print(authState.user.name);
-    return SizedBox.shrink();
     return Observer(
       builder: (context) {
         return Row(
           children: [
-            SizedBox.fromSize(
-              size: Size.fromRadius(50),
-              child: GoogleUserCircleAvatar(
-                identity: authState.firebaseUserIdentity,
-              ),
-            ),
-            Text(authState.user.name, style: context.textTheme.subtitle2.copyWith(
+            CircularNetworkImage(authState.user.photoUrl),
+            Text(authState.user.name,
+              style: context.textTheme.subtitle2.copyWith(
                 color: Colors.white,
-            ),
+              ),
             ),
           ],
         );

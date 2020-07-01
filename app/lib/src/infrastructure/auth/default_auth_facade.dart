@@ -23,6 +23,11 @@ class DefaultAuthFacade extends AuthFacade {
   }
 
   @override
+  Future<Either<AuthFailure, Unit>> signInAnonymously() {
+    return authService.signInAnonymously();
+  }
+
+  @override
   Future<Either<UserFailure, User>> getUser() {
     return authService.getUser();
   }

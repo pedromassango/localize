@@ -21,6 +21,8 @@ abstract class AuthService {
 
   Future<Either<AuthFailure, Unit>> authWithGitHub();
 
+  Future<Either<AuthFailure, Unit>> signInAnonymously();
+
   Future<Either<UserFailure, User>> getUser();
 
   Future<bool> isAuthenticated();

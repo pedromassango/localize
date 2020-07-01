@@ -8,6 +8,9 @@ import 'package:app/src/domain/core/value_objects/unique_id.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 
  User firebaseUserToUser(FirebaseUser user) {
+   if (user.isAnonymous) {
+     return User.anonymous(UniqueId.fromString(user.uid));
+   }
    return User(
      id: UniqueId.fromString(user.uid),
      name: user.displayName,

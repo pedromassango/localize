@@ -25,4 +25,15 @@ class User extends Entity {
     @required this.isAnonymous,
     @required this.isAccountVerified,
   });
+
+  factory User.anonymous(UniqueId id) {
+    return User(
+      id: id,
+      name: 'Anonymous',
+      email: '',
+      isAccountVerified: false,
+      isAnonymous: true,
+      photoUrl: 'https://clikiads.com/static/images/blank_profile.png'
+    );
+  }
 }

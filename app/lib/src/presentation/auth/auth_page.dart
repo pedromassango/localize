@@ -4,13 +4,10 @@
  */
 
 import 'package:app/src/application/auth/auth_state_view_model.dart';
-import 'package:app/src/presentation/common/app_style.dart';
 import 'package:app/src/presentation/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mobx/mobx.dart';
 
 class AuthPage extends StatefulWidget {
@@ -21,15 +18,22 @@ class AuthPage extends StatefulWidget {
 }
 
 class _AuthPageState extends State<AuthPage> {
-  final disposers = <ReactionDisposer>[];
+  final _disposers = <ReactionDisposer>[];
   final authState = Modular.get<AuthStateViewModel>();
 
   @override
   void didChangeDependencies() {
     super.didChangeDependencies();
-    disposers.add(when((_) => authState.isLoggedIn, () {
+    _disposers.add(when((_) => authState.isLoggedIn, () {
       Modular.to.pushNamed(HomePage.route);
     }));
+  }
+
+  @override
+  void dispose() {
+    for (final d in _disposers)
+      d();
+    super.dispose();
   }
 
   @override
@@ -44,26 +48,30 @@ class _AuthPageState extends State<AuthPage> {
               onTap: () {
                 authState.loginWithGoogle();
               },
-                child: Text('Please Login to get started')),
+                child: Padding(
+                  padding: const EdgeInsets.only(bottom: 32),
+                  child: Text('Please Login to get started'),
+                )),
           ),
-          Center(
-            child: _GoogleSignInButton(
-              onPressed: () => authState.loginWithGoogle(),
-            ),
-          ),
-          Center(
-            child: Container(
-              width: double.infinity,
-              height: 56,
-              child: FlatButton.icon(
-                color: context.primaryColor,
-                icon: Icon(
-                  Icons.alternate_email,
-                  color: Colors.white,
-                ),
-                label: Text('Sign in with Github'),
-                onPressed: () => authState.loginWithGitHub(),
+          /*Center(
+            child: Padding(
+              padding: const EdgeInsets.only(top: 32, bottom: 16),
+              child: _GoogleSignInButton(
+                onPressed: () => authState.loginWithGoogle(),
               ),
+            ),
+          ),*/
+          Container(
+            width: 200,
+            height: 40,
+            child: FlatButton.icon(
+              color: context.buttonColor,
+              icon: Icon(
+                Icons.security,
+                color: context.primaryColor,
+              ),
+              label: Text('Sign in Anonymously'),
+              onPressed: () => authState.signInAnonymously(),
             ),
           )
         ],
@@ -87,7 +95,7 @@ class _GoogleSignInButton extends StatelessWidget {
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 16),
-              child: Icon(AppIcons.google),
+              child: Icon(Icons.alternate_email),
             ),
             Text(
               'Sign in with Google',

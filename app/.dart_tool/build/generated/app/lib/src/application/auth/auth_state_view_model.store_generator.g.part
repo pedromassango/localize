@@ -35,23 +35,6 @@ mixin _$AuthStateViewModel on _AuthStateViewModelBase, Store {
     });
   }
 
-  final _$firebaseUserIdentityAtom =
-      Atom(name: '_AuthStateViewModelBase.firebaseUserIdentity');
-
-  @override
-  GoogleSignInAccount get firebaseUserIdentity {
-    _$firebaseUserIdentityAtom.reportRead();
-    return super.firebaseUserIdentity;
-  }
-
-  @override
-  set firebaseUserIdentity(GoogleSignInAccount value) {
-    _$firebaseUserIdentityAtom.reportWrite(value, super.firebaseUserIdentity,
-        () {
-      super.firebaseUserIdentity = value;
-    });
-  }
-
   final _$userFailureAtom = Atom(name: '_AuthStateViewModelBase.userFailure');
 
   @override
@@ -82,12 +65,12 @@ mixin _$AuthStateViewModel on _AuthStateViewModelBase, Store {
     });
   }
 
-  final _$getFirebaseUserAsyncAction =
-      AsyncAction('_AuthStateViewModelBase.getFirebaseUser');
+  final _$signInAnonymouslyAsyncAction =
+      AsyncAction('_AuthStateViewModelBase.signInAnonymously');
 
   @override
-  Future<dynamic> getFirebaseUser() {
-    return _$getFirebaseUserAsyncAction.run(() => super.getFirebaseUser());
+  Future<dynamic> signInAnonymously() {
+    return _$signInAnonymouslyAsyncAction.run(() => super.signInAnonymously());
   }
 
   final _$loginWithGoogleAsyncAction =
@@ -111,7 +94,6 @@ mixin _$AuthStateViewModel on _AuthStateViewModelBase, Store {
     return '''
 isLoggedIn: ${isLoggedIn},
 authFailure: ${authFailure},
-firebaseUserIdentity: ${firebaseUserIdentity},
 userFailure: ${userFailure},
 user: ${user}
     ''';
