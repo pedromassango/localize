@@ -65,6 +65,14 @@ mixin _$AuthStateViewModel on _AuthStateViewModelBase, Store {
     });
   }
 
+  final _$loadUserInfoAsyncAction =
+      AsyncAction('_AuthStateViewModelBase.loadUserInfo');
+
+  @override
+  Future<dynamic> loadUserInfo() {
+    return _$loadUserInfoAsyncAction.run(() => super.loadUserInfo());
+  }
+
   final _$signInAnonymouslyAsyncAction =
       AsyncAction('_AuthStateViewModelBase.signInAnonymously');
 
