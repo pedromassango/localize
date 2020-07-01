@@ -30,5 +30,7 @@ void main() async {
     authFacade: authFacade
   );
 
+  await authStateViewModel.loadUserInfo();
+
   runApp(ModularApp(module: AppModule(authStateViewModel: authStateViewModel)));
 }

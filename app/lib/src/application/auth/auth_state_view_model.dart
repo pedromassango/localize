@@ -41,6 +41,18 @@ abstract class _AuthStateViewModelBase with Store {
   User user;
 
   @action
+  Future loadUserInfo() async {
+    final userResult = await authFacade.getUser();
+    userResult.fold(
+          (l) => userFailure = l,
+          (r) {
+            user = r;
+            isLoggedIn = true;
+          },
+    );
+  }
+
+  @action
   Future signInAnonymously() async {
     final result = await authFacade.signInAnonymously();
     if (result.isRight()) {
