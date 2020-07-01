@@ -1,18 +1,22 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 1/7/2020.
+ * Created by Pedro Massango on 2/7/2020.
  */
 
 import 'package:app/src/application/auth/auth_state_view_model.dart';
+import 'package:app/src/application/projects/projects_view_model.dart';
+import 'package:app/src/domain/core/project.dart';
+import 'package:app/src/presentation/add_project/new_project_dialog.dart';
 import 'package:app/src/presentation/common/app_logo.dart';
 import 'package:app/src/presentation/common/circular_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 
 class SideBar extends StatelessWidget {
+  final projectsViewModel = Modular.get<ProjectsViewModel>();
+
   @override
   Widget build(BuildContext context) {
     final width = 200.0;
@@ -26,11 +30,18 @@ class SideBar extends StatelessWidget {
           Logo(),
           Divider(color: Colors.black12),
           Expanded(
-            child: ListView(
-              children: [
-                // TODO: projects goes here
-                _AddNewProjectButton()
-              ],
+            child: Observer(
+              builder: (context) {
+                return ListView(
+                  children: projectsViewModel.projects.map<Widget>((project) {
+                    return _ProjectListItem(
+                      project: project,
+                      isSelected: projectsViewModel.isSelectedProject(project),
+                      onPressed: () => projectsViewModel.selectProject(project),
+                    );
+                  }).toList()..add(AddNewProjectButton()),
+                );
+              },
             ),
           ),
           Spacer(),
@@ -45,26 +56,45 @@ class SideBar extends StatelessWidget {
   }
 }
 
-class _AddNewProjectButton extends StatelessWidget {
+class _ProjectListItem extends StatelessWidget {
+  final Project project;
+  final VoidCallback onPressed;
+  final bool isSelected;
+
+  const _ProjectListItem({
+    @required this.project,
+    @required this.onPressed,
+    @required this.isSelected,
+  }) : assert(project != null),
+      assert(isSelected != null);
+
   @override
   Widget build(BuildContext context) {
+    final iconAndTextColor = isSelected ? context.primaryColor : Colors.white;
+    final backgroundColor = isSelected ? Colors.white : context.primaryColor;
+
     return SizedBox(
       height: 50,
       child: MaterialButton(
+        elevation: 0.0,
+        hoverElevation: 0.0,
+        highlightElevation: 0,
+        shape: RoundedRectangleBorder(),
+        color: backgroundColor,
         child: Row(
           children: [
             Padding(
               padding: const EdgeInsets.only(right: 16),
-              child: Icon(Icons.add, color: Colors.white54),
+              child: Icon(Icons.stay_primary_portrait, color: iconAndTextColor),
             ),
-            Text('New Project', style: context.textTheme.bodyText2.copyWith(
-              color: Colors.white54
-            )),
+            Text(project.name,
+                style: context.textTheme.bodyText2.copyWith(
+                    color: iconAndTextColor,
+                ),
+            ),
           ],
         ),
-        onPressed: () {
-          //TODO: start screen to create a new project
-        },
+        onPressed: onPressed,
       ),
     );
   }

@@ -1,8 +1,3 @@
-/*
- * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 1/7/2020.
- */
-
 // GENERATED CODE - DO NOT MODIFY BY HAND
 
 part of 'auth_state_view_model.dart';
