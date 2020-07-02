@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 1/7/2020.
+ * Created by Pedro Massango on 2/7/2020.
  */
 
 import 'dart:convert';
@@ -8,11 +8,14 @@ import 'dart:convert';
 import 'package:app/src/domain/auth/auth_service.dart';
 import 'package:app/src/domain/core/failures.dart';
 import 'package:app/src/domain/core/user.dart';
+import 'package:app/src/domain/core/value_objects/unique_id.dart';
 import 'package:app/src/infrastructure/auth/user_mapper.dart';
 import 'package:dartz/dartz.dart';
+import 'package:dio/adapter_browser.dart';
+import 'package:dio/browser_imp.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:google_sign_in/google_sign_in.dart';
-import 'package:http/http.dart' as http;
+import 'package:dio/dio.dart';
 
 class APIUrl {
   static String host = "https://github.com";
@@ -56,17 +59,19 @@ class DefaultAuthService extends AuthService {
   @override
   Future<Either<AuthFailure, Unit>> authWithGitHub() async {
     //TODO: feature locked due to: https://github.com/isaacs/github/issues/330
-    throw UnimplementedError('This feature was not implemented.');
-    final gitHubTokenResult = await _getGitHubToken();
+    //throw UnimplementedError('This feature was not implemented.');
+    final authorizationCode = await _getGitHubAuthorization();
+    if (authorizationCode == null) {
+      //return left(AuthFailure.networkError());
+    }
+    final gitHubToken = await _getGitHubToken(authorizationCode);
 
-    if (gitHubTokenResult.isLeft()) {
+    if (gitHubToken == null) {
       return left(AuthFailure.networkError());
     }
 
-    final gitHubToken = gitHubTokenResult.getOrElse(() => '');
-
     final AuthCredential credential = GithubAuthProvider.getCredential(
-      token: gitHubToken
+        token: gitHubToken
     );
 
     final AuthResult authResult = await firebaseAuth.signInWithCredential(credential);
@@ -92,7 +97,9 @@ class DefaultAuthService extends AuthService {
     return right(unit);
   }
 
-  Future<Either<Unit, String>> _getGitHubToken() async {
+  UniqueId _tokenRequestCodeId;
+  Future<String> _getGitHubAuthorization() async {
+    _tokenRequestCodeId = UniqueId.generate();
     //TODO: feature locked due to: https://github.com/isaacs/github/issues/330
     throw UnimplementedError('This feature was not implemented.');
     try {
@@ -100,26 +107,69 @@ class DefaultAuthService extends AuthService {
         'Content-type': 'application/json;charset=UTF-8',
         'Accept': 'application/json;charset=UTF-8',
       };
-      final body = json.encode(
-          {
-            'client_id': '58924d3d49a76b49d77b',
-            'client_secret': '71763129a5e125eb9a154e8c37f15b17b49ec196',
-          //'scope': 'read:user',
-            'code': null,
-          });
-      var response = await http.post(APIUrl.accessToken,
-        body: body,
-        headers: headers,
+      final body = json.encode({
+        'client_id': '58924d3d49a76b49d77b',
+        //'scope': 'read:user',
+        'client_secret': '71763129a5e125eb9a154e8c37f15b17b49ec196',
+        'state': _tokenRequestCodeId.getOrThrow(),
+      });
+
+      final options = BaseOptions(
+        headers: headers
       );
-      if (response != null && response.statusCode == 200 &&
-          response.body.contains('access_token')) {
-        final Map<String, dynamic> responseData = json.decode(response.body);
-        return right(responseData['access_token']);
-      } else {
-        return left(unit);
+      final dio = DioForBrowser(options);
+      final adapter = BrowserHttpClientAdapter();
+      adapter.withCredentials = true;
+      dio.httpClientAdapter = adapter;
+
+      final response = await dio.post('https://github.com/login/oauth/authorize',
+        data: body,
+        options: Options(headers: headers)
+      );
+      final Map<String, dynamic> responseData = (response.data as Map<String, dynamic>);
+      if (responseData.containsKey('code')) {
+        return responseData['code'].toString();
       }
-    } on Exception catch(e) {
-      return left(unit);
+      return null;
+    } on DioError catch(e) {
+      return null;
+    }
+  }
+
+  Future<String> _getGitHubToken(String code) async {
+    try {
+      var headers = {
+        'Content-type': 'application/json;charset=UTF-8',
+        'Accept': 'application/json;charset=UTF-8',
+      };
+      final body = json.encode({
+        'client_id': '58924d3d49a76b49d77b',
+        'client_secret': '71763129a5e125eb9a154e8c37f15b17b49ec196',
+        //'scope': 'read:user',
+        'code': code,
+        'state': _tokenRequestCodeId.getOrThrow(),
+      });
+
+      final options = BaseOptions(
+          headers: {
+            'Accept': 'application/json'
+          }
+      );
+      final dio = DioForBrowser(options);
+      final adapter = BrowserHttpClientAdapter();
+      adapter.withCredentials = true;
+      dio.httpClientAdapter = adapter;
+      final response = await dio.post('https://github.com/login/oauth/access_token',
+        data: body,
+        options: Options(headers: headers)
+      );
+      final Map<String, dynamic> responseData = (response.data as Map<String, dynamic>);
+      if (responseData.containsKey('access_token')) {
+        return responseData['access_token'].toString();
+      }
+      return null;
+    } on DioError catch(e) {
+      return null;
     }
   }
 

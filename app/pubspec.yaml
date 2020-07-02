@@ -20,7 +20,7 @@ dependencies:
   freezed_annotation:
   dartz:
   uuid:
-  http:
+  dio:
 
 dev_dependencies:
   flutter_test:
