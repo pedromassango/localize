@@ -10,7 +10,8 @@ import 'package:build_context/build_context.dart';
 class ProjectContentView extends StatefulWidget {
   final Project project;
 
-  const ProjectContentView({this.project}) : assert(project != null);
+  const ProjectContentView({this.project}) :
+        assert(project != null, 'project must not be null in project content view.');
 
   @override
   _ProjectContentViewState createState() => _ProjectContentViewState();
