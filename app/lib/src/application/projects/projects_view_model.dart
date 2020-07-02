@@ -13,6 +13,10 @@ class ProjectsViewModel = _ProjectsViewModelBase with _$ProjectsViewModel;
 
 abstract class _ProjectsViewModelBase with Store {
 
+  _ProjectsViewModelBase() {
+    selectProject(_fakeProjects.first);
+  }
+
   ObservableList<Project> projects = ObservableList.of(_fakeProjects);
 
   @observable
