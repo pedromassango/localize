@@ -1,9 +1,11 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 2/7/2020.
+ * Created by Pedro Massango on 3/7/2020.
  */
 
+import 'package:app/src/domain/core/failures.dart';
 import 'package:app/src/domain/core/project.dart';
+import 'package:app/src/domain/core/repositories/project_repository.dart';
 import 'package:app/src/domain/core/value_objects/unique_id.dart';
 import 'package:mobx/mobx.dart';
 
@@ -13,14 +15,26 @@ class ProjectsViewModel = _ProjectsViewModelBase with _$ProjectsViewModel;
 
 abstract class _ProjectsViewModelBase with Store {
 
-  _ProjectsViewModelBase() {
-    selectProject(_fakeProjects.first);
+  _ProjectsViewModelBase(this._projectRepository) {
+    //selectProject(_fakeProjects.first);
   }
 
-  ObservableList<Project> projects = ObservableList.of(_fakeProjects);
+  final ProjectRepository _projectRepository;
+
+  ObservableList<Project> projects = ObservableList.of([]);
 
   @observable
   Project selectedProject;
+
+  @observable
+  NetworkFailure loadProjectsFailure;
+  final NetworkFailure _defaultProjectsError = null;
+
+  @computed
+  bool get hasLoadingProjectsFailure => loadProjectsFailure != _defaultProjectsError;
+
+  @observable
+  bool isLoadingProjects = false;
 
   @action
   void saveProject(String name) {
@@ -48,10 +62,20 @@ abstract class _ProjectsViewModelBase with Store {
     }
     return selectedProject.id.getOrThrow() == project.id.getOrThrow();
   }
-}
 
-final _fakeProjects = [
-  Project(id: UniqueId.generate(), name: 'Localize'),
-  Project(id: UniqueId.generate(), name: 'Facebook'),
-  Project(id: UniqueId.generate(), name: 'Flutter Gallery'),
-];
+  @action
+  Future loadUserProjects(UniqueId userId) async {
+    loadProjectsFailure = _defaultProjectsError;
+    isLoadingProjects = true;
+
+    final result = await _projectRepository.getUserProjects(userId);
+    isLoadingProjects = false;
+    result.fold(
+      (l) => loadProjectsFailure = l,
+      (r) {
+        projects.clear();
+        projects.addAll(r);
+      },
+    );
+  }
+}

@@ -1,17 +1,14 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 1/7/2020.
+ * Created by Pedro Massango on 3/7/2020.
  */
 
 import 'package:app/src/domain/auth/auth_facade.dart';
 import 'package:app/src/domain/core/failures.dart';
 import 'package:app/src/domain/core/user.dart';
 import 'package:app/src/preferences/auth_state_preferences.dart';
-import 'package:app/src/presentation/home/home_page.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
-import 'package:flutter_modular/flutter_modular.dart';
-import 'package:google_sign_in/google_sign_in.dart';
 import 'package:mobx/mobx.dart';
 
 part 'auth_state_view_model.g.dart';

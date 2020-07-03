@@ -1,8 +1,11 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 1/7/2020.
+ * Created by Pedro Massango on 3/7/2020.
  */
 
+import 'package:app/src/domain/core/repositories/project_repository.dart';
+import 'package:app/src/infrastructure/projects/default_project_repository.dart';
+import 'package:app/src/infrastructure/projects/default_project_service.dart';
 import 'package:app/src/presentation/auth/auth_page.dart';
 import 'package:app/src/application/auth/auth_state_view_model.dart';
 import 'package:app/src/presentation/home/home_module.dart';
@@ -19,6 +22,7 @@ class AppModule extends MainModule {
   @override
   List<Bind> get binds => [
     Bind<AuthStateViewModel>((i) => authStateViewModel),
+    Bind<ProjectRepository>((_) => DefaultProjectRepository(DefaultProjectService())),
   ];
 
   @override

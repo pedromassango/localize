@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 1/7/2020.
+ * Created by Pedro Massango on 3/7/2020.
  */
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
@@ -367,4 +367,133 @@ class _$_UserNotFound implements _UserNotFound {
 
 abstract class _UserNotFound implements UserFailure {
   const factory _UserNotFound() = _$_UserNotFound;
+}
+
+class _$NetworkFailureTearOff {
+  const _$NetworkFailureTearOff();
+
+  _NetworkError networkError() {
+    return const _NetworkError();
+  }
+}
+
+// ignore: unused_element
+const $NetworkFailure = _$NetworkFailureTearOff();
+
+mixin _$NetworkFailure {
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result networkError(),
+  });
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result networkError(),
+    @required Result orElse(),
+  });
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result networkError(_NetworkError value),
+  });
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result networkError(_NetworkError value),
+    @required Result orElse(),
+  });
+}
+
+abstract class $NetworkFailureCopyWith<$Res> {
+  factory $NetworkFailureCopyWith(
+          NetworkFailure value, $Res Function(NetworkFailure) then) =
+      _$NetworkFailureCopyWithImpl<$Res>;
+}
+
+class _$NetworkFailureCopyWithImpl<$Res>
+    implements $NetworkFailureCopyWith<$Res> {
+  _$NetworkFailureCopyWithImpl(this._value, this._then);
+
+  final NetworkFailure _value;
+  // ignore: unused_field
+  final $Res Function(NetworkFailure) _then;
+}
+
+abstract class _$NetworkErrorCopyWith<$Res> {
+  factory _$NetworkErrorCopyWith(
+          _NetworkError value, $Res Function(_NetworkError) then) =
+      __$NetworkErrorCopyWithImpl<$Res>;
+}
+
+class __$NetworkErrorCopyWithImpl<$Res>
+    extends _$NetworkFailureCopyWithImpl<$Res>
+    implements _$NetworkErrorCopyWith<$Res> {
+  __$NetworkErrorCopyWithImpl(
+      _NetworkError _value, $Res Function(_NetworkError) _then)
+      : super(_value, (v) => _then(v as _NetworkError));
+
+  @override
+  _NetworkError get _value => super._value as _NetworkError;
+}
+
+class _$_NetworkError implements _NetworkError {
+  const _$_NetworkError();
+
+  @override
+  String toString() {
+    return 'NetworkFailure.networkError()';
+  }
+
+  @override
+  bool operator ==(dynamic other) {
+    return identical(this, other) || (other is _NetworkError);
+  }
+
+  @override
+  int get hashCode => runtimeType.hashCode;
+
+  @override
+  @optionalTypeArgs
+  Result when<Result extends Object>({
+    @required Result networkError(),
+  }) {
+    assert(networkError != null);
+    return networkError();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeWhen<Result extends Object>({
+    Result networkError(),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (networkError != null) {
+      return networkError();
+    }
+    return orElse();
+  }
+
+  @override
+  @optionalTypeArgs
+  Result map<Result extends Object>({
+    @required Result networkError(_NetworkError value),
+  }) {
+    assert(networkError != null);
+    return networkError(this);
+  }
+
+  @override
+  @optionalTypeArgs
+  Result maybeMap<Result extends Object>({
+    Result networkError(_NetworkError value),
+    @required Result orElse(),
+  }) {
+    assert(orElse != null);
+    if (networkError != null) {
+      return networkError(this);
+    }
+    return orElse();
+  }
+}
+
+abstract class _NetworkError implements NetworkFailure {
+  const factory _NetworkError() = _$_NetworkError;
 }

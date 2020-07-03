@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 2/7/2020.
+ * Created by Pedro Massango on 3/7/2020.
  */
 
 import 'package:app/src/application/auth/auth_state_view_model.dart';
@@ -16,6 +16,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 
 class SideBar extends StatelessWidget {
   final projectsViewModel = Modular.get<ProjectsViewModel>();
+  final authViewModel = Modular.get<AuthStateViewModel>();
 
   @override
   Widget build(BuildContext context) {
@@ -29,10 +30,22 @@ class SideBar extends StatelessWidget {
         children: [
           Logo(),
           Divider(color: Colors.black12),
-          Expanded(
-            child: Observer(
-              builder: (context) {
-                return ListView(
+          Observer(
+            builder: (context) {
+              if (projectsViewModel.isLoadingProjects) {
+                return SizedBox(height: 1.5, child: LinearProgressIndicator());
+              } else if (projectsViewModel.hasLoadingProjectsFailure) {
+                return GestureDetector(
+                  onTap: () => projectsViewModel.loadUserProjects(authViewModel.user.id),
+                    child: Text(
+                        'Failed to Load projects.\nTap to try again!',
+                      textAlign: TextAlign.center,
+                      style: TextStyle(color: Colors.red),
+                    ),
+                );
+              }
+              return Expanded(
+                child: ListView(
                   children: projectsViewModel.projects.map<Widget>((project) {
                     return _ProjectListItem(
                       project: project,
@@ -40,9 +53,9 @@ class SideBar extends StatelessWidget {
                       onPressed: () => projectsViewModel.selectProject(project),
                     );
                   }).toList()..add(AddNewProjectButton()),
-                );
-              },
-            ),
+                ),
+              );
+            },
           ),
           Spacer(),
           Divider(color: Colors.black12),
