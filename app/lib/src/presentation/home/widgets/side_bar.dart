@@ -6,7 +6,7 @@
 import 'package:app/src/application/auth/auth_state_view_model.dart';
 import 'package:app/src/application/projects/projects_view_model.dart';
 import 'package:app/src/domain/core/project.dart';
-import 'package:app/src/presentation/add_project/new_project_dialog.dart';
+import 'package:app/src/presentation/home/add_project/new_project_dialog.dart';
 import 'package:app/src/presentation/common/app_logo.dart';
 import 'package:app/src/presentation/common/circular_network_image.dart';
 import 'package:flutter/material.dart';

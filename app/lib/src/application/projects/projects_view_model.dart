@@ -15,9 +15,7 @@ class ProjectsViewModel = _ProjectsViewModelBase with _$ProjectsViewModel;
 
 abstract class _ProjectsViewModelBase with Store {
 
-  _ProjectsViewModelBase(this._projectRepository) {
-    //selectProject(_fakeProjects.first);
-  }
+  _ProjectsViewModelBase(this._projectRepository) : assert(_projectRepository != null);
 
   final ProjectRepository _projectRepository;
 
