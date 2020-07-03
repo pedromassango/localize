@@ -21,6 +21,7 @@ dependencies:
   dartz:
   uuid:
   dio:
+  percent_indicator: ^2.1.5
 
 dev_dependencies:
   flutter_test:
