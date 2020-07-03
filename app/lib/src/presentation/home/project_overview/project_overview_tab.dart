@@ -30,11 +30,11 @@ class ProjectOverViewTab extends StatelessWidget {
               builder: (context) {
                 return TextFormField(
                   readOnly: true,
+                  controller: TextEditingController(text: projectsViewModel.selectedProject.name),
                   decoration: InputDecoration(
                     labelText: 'Project Name',
                     border: OutlineInputBorder()
                   ),
-                  initialValue: projectsViewModel.selectedProject.name,
                 );
               },
             ),
