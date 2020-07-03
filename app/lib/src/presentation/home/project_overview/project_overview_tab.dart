@@ -112,7 +112,7 @@ class _AddLanguageCard extends StatelessWidget {
       width: itemSize.width,
       height: itemSize.height,
       margin: const EdgeInsets.only(right: 8),
-      padding: const EdgeInsets.all(16),
+      padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
       decoration: BoxDecoration(
         color: Colors.white,
         borderRadius: BorderRadius.circular(6),
