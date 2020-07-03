@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 2/7/2020.
+ * Created by Pedro Massango on 3/7/2020.
  */
 
 import 'package:app/src/domain/core/project.dart';
@@ -25,7 +25,8 @@ class _ProjectContentViewState extends State<ProjectContentView>
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: _ProjectToolBar(
-        preferredSize: Size(context.mediaQuerySize.width, 82),
+        projectName: widget.project.name,
+        preferredSize: Size(context.mediaQuerySize.width, 130),
       ),
     );
   }
@@ -33,10 +34,12 @@ class _ProjectContentViewState extends State<ProjectContentView>
 
 class _ProjectToolBar extends StatefulWidget implements PreferredSizeWidget {
 
+  final String projectName;
+
   @override
   final Size preferredSize;
 
-  const _ProjectToolBar({this.preferredSize});
+  const _ProjectToolBar({this.preferredSize, this.projectName});
 
   @override
   _ProjectToolBarState createState() => _ProjectToolBarState();
@@ -57,26 +60,34 @@ class _ProjectToolBarState extends State<_ProjectToolBar>
     return Container(
       height: widget.preferredSize.height,
       width: widget.preferredSize.width,
-      margin: EdgeInsets.only(top: 32, left: 32),
+      margin: EdgeInsets.only(top: 28, left: 32),
       color: Colors.white,
-      child: Row(
-        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      child: Column(
+        crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          SizedBox(
-            height: widget.preferredSize.height,
-            width: widget.preferredSize.width * .3,
-            child: TabBar(
-              labelColor: context.primaryColor,
-              unselectedLabelColor: context.primaryColor,
-              controller: TabController(length: _tabs.length, vsync: this),
-              tabs: _tabs.map((title) {
-                return Tab(
-                  text: title,
-                );
-              }).toList(),
-            ),
+          Text(widget.projectName,
+            style: context.textTheme.headline6.copyWith(fontSize: 24, fontWeight: FontWeight.bold),
           ),
-          _Buttons(),
+          Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              SizedBox(
+                height: 70,
+                width: widget.preferredSize.width * .3,
+                child: TabBar(
+                  labelColor: context.primaryColor,
+                  unselectedLabelColor: context.primaryColor,
+                  controller: TabController(length: _tabs.length, vsync: this),
+                  tabs: _tabs.map((title) {
+                    return Tab(
+                      text: title,
+                    );
+                  }).toList(),
+                ),
+              ),
+              _Buttons(),
+            ],
+          ),
         ],
       ),
     );
