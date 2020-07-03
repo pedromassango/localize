@@ -60,7 +60,7 @@ class _ProjectToolBarState extends State<_ProjectToolBar>
     return Container(
       height: widget.preferredSize.height,
       width: widget.preferredSize.width,
-      margin: EdgeInsets.only(top: 28, left: 32),
+      margin: EdgeInsets.only(top: 28, left: 32, right: 32),
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
@@ -111,7 +111,7 @@ class _Buttons extends StatelessWidget {
             onPressed: () {},
           ),
         ),
-        Padding(padding: EdgeInsets.only(left: 16)),
+        Padding(padding: EdgeInsets.only(left: 8)),
         SizedBox(
           height: 40,
           child: RaisedButton(
