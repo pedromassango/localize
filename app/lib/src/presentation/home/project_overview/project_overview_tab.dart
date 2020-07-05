@@ -1,24 +1,37 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 3/7/2020.
+ * Created by Pedro Massango on 5/7/2020.
  */
 
+import 'package:app/src/application/projects/project_overview/project_overview_view_model.dart';
 import 'package:app/src/application/projects/projects_view_model.dart';
+import 'package:app/src/domain/core/language.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_mobx/flutter_mobx.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:build_context/build_context.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
 
-class ProjectOverViewTab extends StatelessWidget {
+import 'add_language_dialog.dart';
+
+class ProjectOverViewTab extends StatefulWidget {
+  @override
+  _ProjectOverViewTabState createState() => _ProjectOverViewTabState();
+}
+
+class _ProjectOverViewTabState extends State<ProjectOverViewTab> {
   final projectsViewModel = Modular.get<ProjectsViewModel>();
+
+  final languagesViewModel = Modular.get<ProjectOverviewViewModel>();
+
+  @override
+  void initState() {
+    super.initState();
+    languagesViewModel.loadProjectLanguages(projectsViewModel.selectedProject.id);
+  }
 
   @override
   Widget build(BuildContext context) {
-    final languagesWidgets = List<Widget>();
-    languagesWidgets.add(_AddLanguageCard());
-    languagesWidgets.add(_LanguageInfoListItem());
-
     return Padding(
       padding: const EdgeInsets.only(left: 24, top: 50),
       child: Column(
@@ -48,11 +61,17 @@ class ProjectOverViewTab extends StatelessWidget {
           ),
           SizedBox.fromSize(
             size: Size(context.mediaQuerySize.width, 270),
-            child: ListView(
-              scrollDirection: Axis.horizontal,
-              padding: EdgeInsets.all(8),
-              semanticChildCount: languagesWidgets.length,
-              children: languagesWidgets,
+            child: Observer(
+              builder: (context) {
+                return ListView(
+                  scrollDirection: Axis.horizontal,
+                  padding: EdgeInsets.all(8),
+                  semanticChildCount: languagesViewModel.languages.length,
+                  children: <Widget>[AddLanguageButtonCard()]..addAll(languagesViewModel.languages.map((element) {
+                    return _LanguageInfoListItem(language: element);
+                  }).toList()),
+                );
+              },
             ),
           )
         ],
@@ -62,6 +81,10 @@ class ProjectOverViewTab extends StatelessWidget {
 }
 
 class _LanguageInfoListItem extends StatelessWidget {
+  final Language language;
+
+  const _LanguageInfoListItem({this.language});
+
   @override
   Widget build(BuildContext context) {
     final itemSize = Size(200, 260);
@@ -95,52 +118,10 @@ class _LanguageInfoListItem extends StatelessWidget {
           ),
           Padding(
             padding: const EdgeInsets.only(top: 16),
-            child: Text('English - US'),
+            child: Text(language.name),
           ),
-          Text('20 strings', style: context.textTheme.caption)
+          Text('${language.messagesCount} strings', style: context.textTheme.caption)
         ],
-      ),
-    );
-  }
-}
-
-class _AddLanguageCard extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    final itemSize = Size(200, 260);
-    return Container(
-      width: itemSize.width,
-      height: itemSize.height,
-      margin: const EdgeInsets.only(right: 8),
-      padding: const EdgeInsets.fromLTRB(16, 0, 16, 32),
-      decoration: BoxDecoration(
-        color: Colors.white,
-        borderRadius: BorderRadius.circular(6),
-        boxShadow: [
-          BoxShadow(
-            color: Colors.black12,
-            blurRadius: 8
-          )
-        ]
-      ),
-      child: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            Icon(Icons.add_circle_outline,
-              size: 80,
-              color: Colors.black12,
-            ),
-            Padding(
-              padding: const EdgeInsets.only(top: 16),
-              child: Text('Add Language',
-                style: context.textTheme.subtitle1.copyWith(
-                  color: Colors.black26
-                ),
-              ),
-            ),
-          ],
-        ),
       ),
     );
   }
