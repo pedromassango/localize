@@ -13,8 +13,6 @@ dependencies:
   flutter_modular: ^1.2.7+1
   build_context:
   shared_preferences: ^0.5.7+3
-  mobx: ^1.2.1+1
-  flutter_mobx:
   firebase_auth: ^0.15.2
   google_sign_in: ^4.1.0
   freezed_annotation:
@@ -22,6 +20,8 @@ dependencies:
   uuid:
   dio:
   percent_indicator: ^2.1.5
+  cubit: ^0.1.0
+  flutter_cubit: ^0.1.0
 
 dev_dependencies:
   flutter_test:

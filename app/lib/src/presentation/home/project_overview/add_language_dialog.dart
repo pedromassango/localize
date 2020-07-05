@@ -3,13 +3,12 @@
  * Created by Pedro Massango on 5/7/2020.
  */
 
-import 'package:app/src/application/projects/project_overview/project_overview_view_model.dart';
-import 'package:app/src/application/projects/projects_view_model.dart';
+import 'package:app/src/application/projects/languages_view_model.dart';
 import 'package:app/src/domain/core/language.dart';
 import 'package:app/src/utils/language_utils.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_cubit/flutter_cubit.dart';
 
 class NewLanguageDialog extends StatefulWidget {
   @override
@@ -23,9 +22,7 @@ class _NewLanguageDialogState extends State<NewLanguageDialog> {
 
   void _onCreateLanguage(BuildContext context) {
     if (_selectedLanguage != null) {
-      final projectsViewModel = Modular.get<ProjectsViewModel>();
-      Modular.get<ProjectOverviewViewModel>()
-      .saveLanguage(projectsViewModel.selectedProject, _selectedLanguage);
+      context.cubit<LanguagesViewModel>().saveLanguage(_selectedLanguage);
       context.pop();
     }
   }

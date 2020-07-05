@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 3/7/2020.
+ * Created by Pedro Massango on 5/7/2020.
  */
 
 import 'package:app/src/application/auth/auth_state_view_model.dart';
@@ -11,16 +11,14 @@ import 'package:app/src/presentation/common/app_logo.dart';
 import 'package:app/src/presentation/common/circular_network_image.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_cubit/flutter_cubit.dart';
 
 class SideBar extends StatelessWidget {
-  final projectsViewModel = Modular.get<ProjectsViewModel>();
-  final authViewModel = Modular.get<AuthStateViewModel>();
 
   @override
   Widget build(BuildContext context) {
     final width = 200.0;
+    final authState = context.cubit<AuthStateViewModel>().state;
 
     return Container(
       width: width,
@@ -30,27 +28,29 @@ class SideBar extends StatelessWidget {
         children: [
           Logo(),
           Divider(color: Colors.black12),
-          Observer(
-            builder: (context) {
-              if (projectsViewModel.isLoadingProjects) {
+          CubitBuilder<ProjectsViewModel, ProjectsState>(
+            buildWhen: (p, n) => p.projects.length != n.projects.length,
+            builder: (context, state) {
+              print('ProjectsViewModel updated.... ${state.isLoadingProjects}');
+              if (state.isLoadingProjects) {
                 return SizedBox(height: 1.5, child: LinearProgressIndicator());
-              } else if (projectsViewModel.hasLoadingProjectsFailure) {
+              } else if (state.hasLoadingProjectsFailure) {
                 return GestureDetector(
-                  onTap: () => projectsViewModel.loadUserProjects(authViewModel.user.id),
-                    child: Text(
-                        'Failed to Load projects.\nTap to try again!',
-                      textAlign: TextAlign.center,
-                      style: TextStyle(color: Colors.red),
-                    ),
+                  onTap: () => context.cubit<ProjectsViewModel>().loadUserProjects(authState.user.id),
+                  child: Text(
+                    'Failed to Load projects.\nTap to try again!',
+                    textAlign: TextAlign.center,
+                    style: TextStyle(color: Colors.red),
+                  ),
                 );
               }
               return Expanded(
                 child: ListView(
-                  children: projectsViewModel.projects.map<Widget>((project) {
+                  children: state.projects.map<Widget>((project) {
                     return _ProjectListItem(
                       project: project,
-                      isSelected: projectsViewModel.isSelectedProject(project),
-                      onPressed: () => projectsViewModel.selectProject(project),
+                      isSelected: state.isSelectedProject(project),
+                      onPressed: () => context.cubit<ProjectsViewModel>().selectProject(project),
                     );
                   }).toList()..add(AddNewProjectButton()),
                 ),
@@ -61,7 +61,9 @@ class SideBar extends StatelessWidget {
           Divider(color: Colors.black12),
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
-            child: _AccountSection(),
+            child: CubitBuilder<AuthStateViewModel, AuthState>(
+              builder: (context, authState) => _AccountSection(authState: authState),
+            ),
           ),
         ],
       ),
@@ -114,26 +116,22 @@ class _ProjectListItem extends StatelessWidget {
 }
 
 class _AccountSection extends StatelessWidget {
-  final authState = Modular.get<AuthStateViewModel>();
+  final AuthState authState;
+
+  const _AccountSection({this.authState}) : assert(authState != null);
 
   @override
   Widget build(BuildContext context) {
-
-    print(authState.user.name);
-    return Observer(
-      builder: (context) {
-        return Row(
-          children: [
-            CircularNetworkImage(authState.user.photoUrl),
-            Text(authState.user.name,
-              style: context.textTheme.subtitle2.copyWith(
-                color: Colors.white,
-              ),
-            ),
-          ],
-        );
-      },
+    return Row(
+      children: [
+        CircularNetworkImage(authState.user.photoUrl),
+        Text(
+          authState.user.name,
+          style: context.textTheme.subtitle2.copyWith(
+            color: Colors.white,
+          ),
+        ),
+      ],
     );
   }
 }
-

@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 3/7/2020.
+ * Created by Pedro Massango on 5/7/2020.
  */
 
 import 'package:app/src/domain/core/repositories/project_repository.dart';
@@ -17,16 +17,17 @@ import 'app.dart';
 class AppModule extends MainModule {
   final AuthStateViewModel authStateViewModel;
 
-  AppModule({this.authStateViewModel});
+  AppModule({
+    this.authStateViewModel,
+  });
 
   @override
   List<Bind> get binds => [
-    Bind<AuthStateViewModel>((i) => authStateViewModel),
     Bind<ProjectRepository>((_) => DefaultProjectRepository(DefaultProjectService())),
   ];
 
   @override
-  Widget get bootstrap => App();
+  Widget get bootstrap => App(authStateViewModel: authStateViewModel);
 
   @override
   List<Router> get routers => [

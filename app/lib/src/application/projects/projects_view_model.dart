@@ -7,51 +7,24 @@ import 'package:app/src/domain/core/failures.dart';
 import 'package:app/src/domain/core/project.dart';
 import 'package:app/src/domain/core/repositories/project_repository.dart';
 import 'package:app/src/domain/core/value_objects/unique_id.dart';
+import 'package:cubit/cubit.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobx/mobx.dart';
 
-part 'projects_view_model.g.dart';
+part 'projects_view_model.freezed.dart';
 
-class ProjectsViewModel = _ProjectsViewModelBase with _$ProjectsViewModel;
+@freezed
+abstract class ProjectsState with _$ProjectsState {
+  factory ProjectsState({
+    @Default([]) List<Project> projects,
+    Project selectedProject,
+    NetworkFailure loadProjectsFailure,
+    @Default(false) bool isLoadingProjects,
+  }) = _ProjectsState;
+}
 
-abstract class _ProjectsViewModelBase with Store {
-
-  _ProjectsViewModelBase(this._projectRepository) : assert(_projectRepository != null);
-
-  final ProjectRepository _projectRepository;
-
-  ObservableList<Project> projects = ObservableList.of([]);
-
-  @observable
-  Project selectedProject;
-
-  @observable
-  NetworkFailure loadProjectsFailure;
-  final NetworkFailure _defaultProjectsError = null;
-
-  @computed
-  bool get hasLoadingProjectsFailure => loadProjectsFailure != _defaultProjectsError;
-
-  @observable
-  bool isLoadingProjects = false;
-
-  @action
-  void saveProject(String name) {
-    final project = Project(
-      id: UniqueId.generate(),
-      name: name
-    );
-
-    projects.add(project);
-  }
-
-  @action
-  void selectProject(Project project) {
-    assert(project != null);
-
-    if (projects.contains(project)) {
-      selectedProject = project;
-    }
-  }
+extension Ext on ProjectsState {
+  bool get hasLoadingProjectsFailure => loadProjectsFailure != null;
 
   bool isSelectedProject(Project project) {
     assert(project != null);
@@ -60,21 +33,54 @@ abstract class _ProjectsViewModelBase with Store {
     }
     return selectedProject.id.getOrThrow() == project.id.getOrThrow();
   }
+}
+
+class ProjectsViewModel extends Cubit<ProjectsState> {
+
+  ProjectsViewModel(this._projectRepository) :
+        assert(_projectRepository != null),
+        super(ProjectsState());
+
+  final ProjectRepository _projectRepository;
+
+  @action
+  void saveProject(String name) {
+    final project = Project(
+      id: UniqueId.generate(),
+      name: name
+    );
+
+    emit(state.copyWith.call(projects: state.projects..add(project)));
+  }
+
+  @action
+  void selectProject(Project project) {
+    assert(project != null);
+
+    emit(state.copyWith.call(selectedProject: project));
+  }
+
+  bool isSelectedProject(Project project) {
+    assert(project != null);
+    if (state.selectedProject == null) {
+      return false;
+    }
+    return state.selectedProject.id.getOrThrow() == project.id.getOrThrow();
+  }
 
   @action
   Future loadUserProjects(UniqueId userId) async {
-    loadProjectsFailure = _defaultProjectsError;
-    isLoadingProjects = true;
+    emit(state.copyWith.call(isLoadingProjects: true, loadProjectsFailure: null));
 
     final result = await _projectRepository.getUserProjects(userId);
-    isLoadingProjects = false;
-    result.fold(
-      (l) => loadProjectsFailure = l,
-      (r) {
-        projects.clear();
-        projects.addAll(r);
-        selectProject(projects.first);
-      },
+
+    var newState = state.copyWith.call(isLoadingProjects: false);
+
+    final r = newState = result.fold(
+      (l) => newState.copyWith.call(loadProjectsFailure: l),
+      (r) => newState.copyWith.call(projects: r, selectedProject: r.first),
     );
+    emit(r.copyWith.call(isLoadingProjects: false));
+    print('State updated');
   }
 }

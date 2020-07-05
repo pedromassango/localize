@@ -1,64 +1,60 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 3/7/2020.
+ * Created by Pedro Massango on 5/7/2020.
  */
 
 import 'package:app/src/domain/auth/auth_facade.dart';
 import 'package:app/src/domain/core/failures.dart';
 import 'package:app/src/domain/core/user.dart';
 import 'package:app/src/preferences/auth_state_preferences.dart';
+import 'package:cubit/cubit.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
+import 'package:freezed_annotation/freezed_annotation.dart';
 import 'package:mobx/mobx.dart';
 
-part 'auth_state_view_model.g.dart';
+part 'auth_state_view_model.freezed.dart';
 
-class AuthStateViewModel = _AuthStateViewModelBase with _$AuthStateViewModel;
+@freezed
+abstract class AuthState with _$AuthState {
+  factory AuthState({
+    @Default(false) bool isLoggedIn,
+    UserFailure userFailure,
+    AuthFailure authFailure,
+    User user,
+  }) = _AuthState;
+}
 
-abstract class _AuthStateViewModelBase with Store {
-  _AuthStateViewModelBase({
+class AuthStateViewModel extends Cubit<AuthState> {
+  AuthStateViewModel({
     @required this.preferences,
     @required this.authFacade,
   }) : assert(preferences != null),
-       assert(authFacade != null);
+       assert(authFacade != null),
+  super(AuthState());
 
   final AuthFacade authFacade;
   final AuthStatePreferences preferences;
 
-  @observable
-  bool isLoggedIn = false;
-
-  @observable
-  AuthFailure authFailure;
-
-  @observable
-  UserFailure userFailure;
-
-  @observable
-  User user;
-
-  @action
   Future loadUserInfo() async {
     final userResult = await authFacade.getUser();
     userResult.fold(
-          (l) => userFailure = l,
-          (r) {
-            user = r;
-            isLoggedIn = true;
-          },
+          (l) => emit(state.copyWith.call(userFailure: l)),
+          (r) => emit(state.copyWith.call(
+            user: r,
+            isLoggedIn: true
+          ),
+          ),
     );
   }
 
-  @action
   Future signInAnonymously() async {
     final result = await authFacade.signInAnonymously();
     if (result.isRight()) {
-      final userResult = await authFacade.getUser();
-      userResult.fold((l) => userFailure = l, (r) => user = r);
-      isLoggedIn = true;
+      await loadUserInfo();
       return;
     }
-    result.fold((l) => authFailure = l, id);
+    result.fold((l) => emit(state.copyWith.call(authFailure: l)), id);
   }
 
   @action
@@ -68,17 +64,13 @@ abstract class _AuthStateViewModelBase with Store {
       final result = await authFacade.authWithGoogle();
       if (result.isRight()) {
         preferences.setLoginStatus(true);
-        final currentUser = await authFacade.getUser();
-        currentUser.fold(
-              (l) => userFailure = l,
-              (r) => user = r,
-        );
+        await loadUserInfo();
         return;
       }
-      result.fold((l) => authFailure = l,(_) {});
+      result.fold((l) => emit(state.copyWith.call(authFailure: l)), id);
     } else {
-      isLoggedIn = true;
-      preferences.setLoginStatus(isLoggedIn);
+      preferences.setLoginStatus(isAuthenticated);
+      await loadUserInfo();
     }
   }
 
@@ -89,18 +81,12 @@ abstract class _AuthStateViewModelBase with Store {
       final result = await authFacade.authWithGitHub();
       if (result.isRight()) {
         preferences.setLoginStatus(true);
-        final currentUser = await authFacade.getUser();
-        currentUser.fold(
-              (l) => userFailure = l,
-              (r) => user = r,
-        );
+        await loadUserInfo();
         return;
       }
-      result.fold((l) => authFailure = l,(_) {});
+      result.fold((l) => emit(state.copyWith.call(authFailure: l)), id);
     } else {
-      isLoggedIn = true;
-      preferences.setLoginStatus(isLoggedIn);
+      preferences.setLoginStatus(isAuthenticated);
     }
   }
 }
-
