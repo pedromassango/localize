@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 1/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/infrastructure/auth/default_auth_facade.dart';
@@ -14,9 +14,16 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'src/application/auth/auth_state_view_model.dart';
 import 'src/presentation/core/app_module.dart';
+import 'package:riverpod/riverpod.dart';
 
 final FirebaseAuth firebaseAuth = FirebaseAuth.instance;
 final GoogleSignIn googleSignIn = GoogleSignIn();
+
+final prefsProvider = FutureProvider((ref) => SharedPreferences.getInstance());
+final authStatePreferences = FutureProvider<AuthStatePreferences>((ref) async {
+  final prefs = await ref.dependOn(prefsProvider).value;
+  return AuthStatePreferences(prefs);
+});
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

@@ -7,26 +7,27 @@
         <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
       </path>
     </expand>
-    <select />
+    <select>
+      <path>
+        <item name="ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="LOCAL_ROOT" type="e8cecc67:BranchNodeDescriptor" />
+        <item name="BRANCH:use-cubit" type="e8cecc67:BranchNodeDescriptor" />
+      </path>
+    </select>
   </component>
   <component name="ChangeListManager">
     <list default="true" id="6a9b4dba-825d-44c1-b61b-6fc8a4e1f973" name="Default Changelist" comment="Improved project structure &amp;&amp; add authentication page">
-      <change beforePath="$PROJECT_DIR$/.dart_tool/build/generated/app/lib/src/application/auth/auth_state_view_model.store_generator.g.part" beforeDir="false" afterPath="$PROJECT_DIR$/.dart_tool/build/generated/app/lib/src/application/auth/auth_state_view_model.store_generator.g.part" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.flutter-plugins-dependencies" beforeDir="false" afterPath="$PROJECT_DIR$/.flutter-plugins-dependencies" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.packages" beforeDir="false" afterPath="$PROJECT_DIR$/.packages" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/application/auth/auth_state_view_model.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/application/auth/auth_state_view_model.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/application/auth/auth_state_view_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/application/auth/auth_state_view_model.g.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/domain/auth/auth_facade.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/domain/auth/auth_facade.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/domain/auth/auth_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/domain/auth/auth_service.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/generated_plugin_registrant.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/main.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/main.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/application/projects/project_overview/project_overview_view_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/application/projects/project_overview/project_overview_view_model.g.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/lib/src/application/projects/projects_view_model.g.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/application/projects/projects_view_model.g.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/domain/core/failures.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/domain/core/failures.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/domain/core/user.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/domain/core/user.dart" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/lib/src/domain/core/value_objects/value_failure.freezed.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/domain/core/value_objects/value_failure.freezed.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_facade.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_facade.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/infrastructure/auth/user_mapper.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/infrastructure/auth/user_mapper.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/presentation/auth/auth_page.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/auth/auth_page.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/presentation/core/app.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/core/app.dart" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/lib/src/presentation/home/widgets/side_bar.dart" beforeDir="false" afterPath="$PROJECT_DIR$/lib/src/presentation/home/widgets/side_bar.dart" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.lock" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.lock" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/pubspec.yaml" beforeDir="false" afterPath="$PROJECT_DIR$/pubspec.yaml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -41,6 +42,11 @@
     </option>
   </component>
   <component name="Git.Settings">
+    <option name="RECENT_BRANCH_BY_REPOSITORY">
+      <map>
+        <entry key="$PROJECT_DIR$/.." value="use-cubit" />
+      </map>
+    </option>
     <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
   </component>
   <component name="GitToolBoxStore">
@@ -52,6 +58,10 @@
             <RecentBranchesForRepo>
               <option name="branches">
                 <list>
+                  <RecentBranch>
+                    <option name="branchName" value="use-riverpod" />
+                    <option name="lastUsedInstant" value="1594061767" />
+                  </RecentBranch>
                   <RecentBranch>
                     <option name="branchName" value="github-auth" />
                     <option name="lastUsedInstant" value="1593535321" />
@@ -158,7 +168,19 @@
       <map>
         <entry key="MAIN">
           <value>
-            <State />
+            <State>
+              <option name="FILTERS">
+                <map>
+                  <entry key="branch">
+                    <value>
+                      <list>
+                        <option value="use-cubit" />
+                      </list>
+                    </value>
+                  </entry>
+                </map>
+              </option>
+            </State>
           </value>
         </entry>
       </map>
@@ -177,10 +199,10 @@
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
     <state x="-1242" y="108" width="954" height="458" key="#com.intellij.codeInsight.template.impl.EditVariableDialog/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593531869278" />
-    <state x="-1496" y="33" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1593618791228">
+    <state x="-1496" y="33" key="#com.intellij.execution.impl.EditConfigurationsDialog" timestamp="1594061936027">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state x="-1496" y="33" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593618791228" />
+    <state x="-1496" y="33" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1594061936027" />
     <state x="249" y="104" key="#com.intellij.execution.impl.EditConfigurationsDialog/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615081854" />
     <state x="444" y="291" key="#com.intellij.ide.util.MemberChooser" timestamp="1593550597580">
       <screen x="0" y="23" width="1920" height="1127" />
@@ -195,52 +217,52 @@
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
     <state x="-1222" y="298" key="GitCloneDialog/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593605999507" />
-    <state width="1234" height="283" key="GridCell.Tab.0.bottom" timestamp="1593627521359">
+    <state width="1878" height="338" key="GridCell.Tab.0.bottom" timestamp="1594061737761">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1234" height="283" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627521359" />
+    <state width="1878" height="338" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1594061737761" />
     <state width="1003" height="309" key="GridCell.Tab.0.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872460" />
     <state width="1284" height="332" key="GridCell.Tab.0.bottom/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
-    <state width="1234" height="283" key="GridCell.Tab.0.center" timestamp="1593627521358">
+    <state width="1878" height="338" key="GridCell.Tab.0.center" timestamp="1594061737760">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1234" height="283" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627521358" />
+    <state width="1878" height="338" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1594061737760" />
     <state width="1003" height="309" key="GridCell.Tab.0.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872458" />
     <state width="1284" height="332" key="GridCell.Tab.0.center/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
-    <state width="1234" height="283" key="GridCell.Tab.0.left" timestamp="1593627521357">
+    <state width="1878" height="338" key="GridCell.Tab.0.left" timestamp="1594061737760">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1234" height="283" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627521357" />
+    <state width="1878" height="338" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1594061737760" />
     <state width="1003" height="309" key="GridCell.Tab.0.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872458" />
     <state width="1284" height="332" key="GridCell.Tab.0.left/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393038" />
-    <state width="1234" height="283" key="GridCell.Tab.0.right" timestamp="1593627521358">
+    <state width="1878" height="338" key="GridCell.Tab.0.right" timestamp="1594061737761">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1234" height="283" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627521358" />
+    <state width="1878" height="338" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1594061737761" />
     <state width="1003" height="309" key="GridCell.Tab.0.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872459" />
     <state width="1284" height="332" key="GridCell.Tab.0.right/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
-    <state width="1234" height="283" key="GridCell.Tab.1.bottom" timestamp="1593627571184">
+    <state width="1878" height="338" key="GridCell.Tab.1.bottom" timestamp="1594061737763">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1234" height="283" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627571184" />
+    <state width="1878" height="338" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1594061737763" />
     <state width="1003" height="309" key="GridCell.Tab.1.bottom/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872348" />
     <state width="1284" height="332" key="GridCell.Tab.1.bottom/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393040" />
-    <state width="1234" height="283" key="GridCell.Tab.1.center" timestamp="1593627571173">
+    <state width="1878" height="338" key="GridCell.Tab.1.center" timestamp="1594061737763">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1234" height="283" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627571173" />
+    <state width="1878" height="338" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1594061737763" />
     <state width="1003" height="309" key="GridCell.Tab.1.center/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872348" />
     <state width="1284" height="332" key="GridCell.Tab.1.center/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393040" />
-    <state width="1234" height="283" key="GridCell.Tab.1.left" timestamp="1593627571169">
+    <state width="1878" height="338" key="GridCell.Tab.1.left" timestamp="1594061737762">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1234" height="283" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627571169" />
+    <state width="1878" height="338" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1594061737762" />
     <state width="1003" height="309" key="GridCell.Tab.1.left/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872347" />
     <state width="1284" height="332" key="GridCell.Tab.1.left/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393039" />
-    <state width="1234" height="283" key="GridCell.Tab.1.right" timestamp="1593627571178">
+    <state width="1878" height="338" key="GridCell.Tab.1.right" timestamp="1594061737763">
       <screen x="-1920" y="-157" width="1920" height="1057" />
     </state>
-    <state width="1234" height="283" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593627571178" />
+    <state width="1878" height="338" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1594061737763" />
     <state width="1003" height="309" key="GridCell.Tab.1.right/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593615872348" />
     <state width="1284" height="332" key="GridCell.Tab.1.right/0.23.1920.1127@0.23.1920.1127" timestamp="1593544393040" />
     <state x="581" y="162" width="1178" height="954" key="SettingsEditor" timestamp="1593544706120">
@@ -262,26 +284,5 @@
     <state x="-1295" y="78" key="search.everywhere.popup/0.23.1440.827/-1920.-157.1920.1057@-1920.-157.1920.1057" timestamp="1593539308298" />
     <state x="469" y="207" width="670" height="497" key="search.everywhere.popup/0.23.1440.827/-1920.-157.1920.1057@0.23.1440.827" timestamp="1593614495465" />
     <state x="625" y="274" width="670" height="676" key="search.everywhere.popup/0.23.1920.1127@0.23.1920.1127" timestamp="1593544501057" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart</url>
-          <line>73</line>
-          <option name="timeStamp" value="6" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart</url>
-          <line>76</line>
-          <option name="timeStamp" value="7" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="Dart">
-          <url>file://$PROJECT_DIR$/lib/src/infrastructure/auth/default_auth_service.dart</url>
-          <line>109</line>
-          <option name="timeStamp" value="12" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>
