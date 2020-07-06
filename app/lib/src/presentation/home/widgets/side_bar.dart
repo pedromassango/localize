@@ -26,19 +26,10 @@ class SideBar extends StatelessWidget {
       color: context.primaryColor,
       child: Column(
         children: [
-          CubitConsumer<ProjectsViewModel, ProjectsState>(
-            listener: (c, s) {
-
-            },
-            builder: (c, s) {
-              print('CubitConsumer called: ${s.isLoadingProjects}');
-              return Logo();
-            },
-          ),
+          Logo(),
           Divider(color: Colors.black12),
           CubitBuilder<ProjectsViewModel, ProjectsState>(
             builder: (context, state) {
-              print('ProjectsViewModel updated.... ${state.isLoadingProjects}');
               if (state.isLoadingProjects == null || state.isLoadingProjects) {
                 return SizedBox(height: 1.5, child: LinearProgressIndicator());
               } else if (state.hasLoadingProjectsFailure) {

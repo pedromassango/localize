@@ -20,8 +20,8 @@ dependencies:
   uuid:
   dio:
   percent_indicator: ^2.1.5
-  cubit: ^0.1.0
-  flutter_cubit: ^0.1.0
+  cubit: ^0.2.0-dev.1
+  flutter_cubit: ^0.2.0-dev.1
 
 dev_dependencies:
   flutter_test:

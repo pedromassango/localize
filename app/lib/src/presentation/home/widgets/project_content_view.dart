@@ -85,6 +85,8 @@ class _ProjectToolBar extends PreferredSize {
                 child: TabBar(
                   labelColor: context.primaryColor,
                   indicatorWeight: 3,
+                  isScrollable: false,
+                  physics: NeverScrollableScrollPhysics(),
                   indicatorPadding: EdgeInsets.all(0.0),
                   indicatorColor: context.primaryColor,
                   unselectedLabelColor: context.primaryColor,

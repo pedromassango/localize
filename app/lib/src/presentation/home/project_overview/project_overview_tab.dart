@@ -25,9 +25,8 @@ class _ProjectOverViewTabState extends State<ProjectOverViewTab> {
   @override
   void initState() {
     super.initState();
-    final project = context.cubit<ProjectsViewModel>().state.selectedProject;
-    final languagesViewModel = context.cubit<LanguagesViewModel>();
-    languagesViewModel.loadProjectLanguages(project);
+
+    print('OverviewTab initState');
   }
 
   @override

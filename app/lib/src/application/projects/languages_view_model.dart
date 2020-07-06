@@ -18,6 +18,7 @@ abstract class LanguagesState with _$LanguagesState {
     @Default(false) bool isLoadingLanguages,
     NetworkFailure loadLanguageFailure,
     @Default([]) List<Language> languages,
+    Project project,
   }) = _LanguagesState;
 }
 
@@ -29,28 +30,36 @@ class LanguagesViewModel extends Cubit<LanguagesState> {
 
   final LanguageRepository languageRepository;
 
-  void saveLanguage(Project project, Language language) {
+  // This need to be called before using any other method inside of this class.
+  Future onSelectedProjectChanged(Project selectedProject) async {
+    emit(state.copyWith(project: selectedProject, languages: []));
+    await loadProjectLanguages();
+  }
+
+  void saveLanguage(Language language) {
+    ArgumentError.checkNotNull(state.project != null);
+
     final languages = List.of(state.languages, growable: true);
     languages.add(language);
     emit(state.copyWith.call(languages: languages));
-    languageRepository.saveLanguage(project.id, language);
+    languageRepository.saveLanguage(state.project.id, language);
   }
 
-  Future loadProjectLanguages(Project project) async {
+  Future loadProjectLanguages() async {
+    ArgumentError.checkNotNull(state.project != null);
+
     emit(state.copyWith.call(
       isLoadingLanguages: true,
       loadLanguageFailure: null
     ));
 
-    final result = await languageRepository.getProjectLanguages(project.id);
+    final result = await languageRepository.getProjectLanguages(state.project.id);
 
-    final newState = state.copyWith.call(
-      isLoadingLanguages: false
-    );
+    var newState = state.copyWith.call(isLoadingLanguages: false);
 
-    result.fold(
-          (l) => newState.copyWith.call(loadLanguageFailure: l, isLoadingLanguages: false),
-          (r) => newState.copyWith.call(languages: r),
+    newState = result.fold(
+          (l) => newState.copyWith(loadLanguageFailure: l),
+          (r) => newState.copyWith(languages: r),
     );
     emit(newState);
   }

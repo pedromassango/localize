@@ -4,7 +4,6 @@
  */
 
 import 'package:app/src/application/projects/languages_view_model.dart';
-import 'package:app/src/application/projects/projects_view_model.dart';
 import 'package:app/src/domain/core/language.dart';
 import 'package:app/src/utils/language_utils.dart';
 import 'package:flutter/material.dart';
@@ -23,8 +22,7 @@ class _NewLanguageDialogState extends State<NewLanguageDialog> {
 
   void _onCreateLanguage(BuildContext context) {
     if (_selectedLanguage != null) {
-      final project = context.cubit<ProjectsViewModel>().state.selectedProject;
-      context.cubit<LanguagesViewModel>().saveLanguage(project, _selectedLanguage);
+      context.cubit<LanguagesViewModel>().saveLanguage(_selectedLanguage);
       context.pop();
     }
   }
