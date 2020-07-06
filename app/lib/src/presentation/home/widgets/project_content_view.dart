@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/application/projects/languages_view_model.dart';
@@ -38,18 +38,12 @@ class _ProjectContentViewState extends State<ProjectContentView>
           projectName: widget.project.name,
           preferredSize: Size(context.mediaQuerySize.width, 130),
         ),
-        body: CubitProvider<LanguagesViewModel>(
-          create: (context) => LanguagesViewModel(
-            project: widget.project,
-            languageRepository: Modular.get<LanguageRepository>()
-          ),
-          child: TabBarView(
-            physics: NeverScrollableScrollPhysics(),
-            children: [
-              ProjectOverViewTab(),
-              ProjectMessagesTab(),
-            ],
-          ),
+        body: TabBarView(
+          physics: NeverScrollableScrollPhysics(),
+          children: [
+            ProjectOverViewTab(),
+            ProjectMessagesTab(),
+          ],
         )
       ),
     );

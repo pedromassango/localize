@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/application/auth/auth_state_view_model.dart';
@@ -21,35 +21,31 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  final projectsViewModel = ProjectsViewModel(Modular.get<ProjectRepository>());
 
   @override
   void initState() {
     super.initState();
-    projectsViewModel.loadUserProjects(context.cubit<AuthStateViewModel>().state.user.id);
+    context.cubit<ProjectsViewModel>().loadUserProjects(context.cubit<AuthStateViewModel>().state.user.id);
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: CubitProvider<ProjectsViewModel>.value(
-        value: projectsViewModel,
-        child: Row(
-          children: [
-            SideBar(),
-            Expanded(
-              child: CubitBuilder<ProjectsViewModel, ProjectsState>(
-                buildWhen: (prevState, newState) => prevState.selectedProject != newState.selectedProject,
-                builder: (context, state) {
-                  if (state.selectedProject != null) {
-                    return ProjectContentView(project: state.selectedProject);
-                  }
-                  return _NoSelectedProjectWidget();
-                },
-              ),
+      body: Row(
+        children: [
+          SideBar(),
+          Expanded(
+            child: CubitBuilder<ProjectsViewModel, ProjectsState>(
+              buildWhen: (prevState, newState) => prevState.selectedProject != newState.selectedProject,
+              builder: (context, state) {
+                if (state.selectedProject != null) {
+                  return ProjectContentView(project: state.selectedProject);
+                }
+                return _NoSelectedProjectWidget();
+              },
             ),
-          ],
-        ),
+          ),
+        ],
       ),
     );
   }

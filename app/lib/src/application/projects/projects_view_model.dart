@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/domain/core/failures.dart';
@@ -9,13 +9,12 @@ import 'package:app/src/domain/core/repositories/project_repository.dart';
 import 'package:app/src/domain/core/value_objects/unique_id.dart';
 import 'package:cubit/cubit.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobx/mobx.dart';
 
 part 'projects_view_model.freezed.dart';
 
 @freezed
 abstract class ProjectsState with _$ProjectsState {
-  factory ProjectsState({
+  const factory ProjectsState({
     @Default([]) List<Project> projects,
     Project selectedProject,
     NetworkFailure loadProjectsFailure,
@@ -43,17 +42,18 @@ class ProjectsViewModel extends Cubit<ProjectsState> {
 
   final ProjectRepository _projectRepository;
 
-  @action
   void saveProject(String name) {
     final project = Project(
       id: UniqueId.generate(),
       name: name
     );
 
-    emit(state.copyWith.call(projects: state.projects..add(project)));
+    final projects = List.of(state.projects, growable: true);
+    projects.add(project);
+
+    emit(state.copyWith.call(projects: projects));
   }
 
-  @action
   void selectProject(Project project) {
     assert(project != null);
 
@@ -68,19 +68,19 @@ class ProjectsViewModel extends Cubit<ProjectsState> {
     return state.selectedProject.id.getOrThrow() == project.id.getOrThrow();
   }
 
-  @action
-  Future loadUserProjects(UniqueId userId) async {
-    emit(state.copyWith.call(isLoadingProjects: true, loadProjectsFailure: null));
+  void loadUserProjects(UniqueId userId) async {
+    emit(state.copyWith(isLoadingProjects: true, loadProjectsFailure: null));
 
     final result = await _projectRepository.getUserProjects(userId);
 
-    var newState = state.copyWith.call(isLoadingProjects: false);
-
-    final r = newState = result.fold(
-      (l) => newState.copyWith.call(loadProjectsFailure: l),
-      (r) => newState.copyWith.call(projects: r, selectedProject: r.first),
+    final newState = result.fold(
+      (l) => state.copyWith(loadProjectsFailure: l, isLoadingProjects: false),
+      (r) => state.copyWith(projects: r, selectedProject: r.first, isLoadingProjects: false),
     );
-    emit(r.copyWith.call(isLoadingProjects: false));
-    print('State updated');
+
+    print('New state (before emit()): ${state.isLoadingProjects}');
+    emit(newState);
+    print('New state (after emit()): ${state.isLoadingProjects}');
+
   }
 }

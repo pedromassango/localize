@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/domain/auth/auth_facade.dart';
@@ -11,7 +11,6 @@ import 'package:cubit/cubit.dart';
 import 'package:dartz/dartz.dart';
 import 'package:flutter/foundation.dart';
 import 'package:freezed_annotation/freezed_annotation.dart';
-import 'package:mobx/mobx.dart';
 
 part 'auth_state_view_model.freezed.dart';
 
@@ -57,7 +56,6 @@ class AuthStateViewModel extends Cubit<AuthState> {
     result.fold((l) => emit(state.copyWith.call(authFailure: l)), id);
   }
 
-  @action
   Future loginWithGoogle() async {
     final isAuthenticated = await authFacade.isAuthenticated();
     if (!isAuthenticated) {
@@ -74,7 +72,6 @@ class AuthStateViewModel extends Cubit<AuthState> {
     }
   }
 
-  @action
   Future loginWithGitHub() async {
     final isAuthenticated = await authFacade.isAuthenticated();
     if (!isAuthenticated) {

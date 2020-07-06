@@ -1,8 +1,12 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
+import 'package:app/src/application/projects/languages_view_model.dart';
+import 'package:app/src/application/projects/projects_view_model.dart';
+import 'package:app/src/domain/core/repositories/language_repository.dart';
+import 'package:app/src/domain/core/repositories/project_repository.dart';
 import 'package:app/src/presentation/auth/auth_page.dart';
 import 'package:app/src/application/auth/auth_state_view_model.dart';
 import 'package:app/src/presentation/home/home_page.dart';
@@ -17,8 +21,12 @@ class App extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return  CubitProvider<AuthStateViewModel>(
-      create: (context) => authStateViewModel,
+    return  MultiCubitProvider(
+      providers: [
+        CubitProvider.value(value: authStateViewModel),
+        CubitProvider.value(value: ProjectsViewModel(Modular.get<ProjectRepository>())),
+        CubitProvider.value(value: LanguagesViewModel(languageRepository: Modular.get<LanguageRepository>())),
+      ],
       child: MaterialApp(
         title: 'Localize',
         theme: ThemeData(

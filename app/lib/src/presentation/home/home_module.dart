@@ -1,7 +1,7 @@
 
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/domain/core/repositories/language_repository.dart';
@@ -17,11 +17,7 @@ import 'package:flutter_modular/flutter_modular.dart';
 class HomeModule extends ChildModule {
 
   @override
-  List<Bind> get binds => [
-    Bind<LanguageService>((i) => DefaultLanguageService()),
-    Bind<LanguageRepository>((i) => DefaultLanguageRepository(i.get<LanguageService>())),
-    Bind<ProjectRepository>((_) => DefaultProjectRepository(DefaultProjectService())),
-  ];
+  List<Bind> get binds => [];
 
   @override
   List<Router> get routers => [

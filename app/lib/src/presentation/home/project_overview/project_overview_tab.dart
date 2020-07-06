@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/application/projects/languages_view_model.dart';
@@ -21,13 +21,13 @@ class ProjectOverViewTab extends StatefulWidget {
 
 class _ProjectOverViewTabState extends State<ProjectOverViewTab> {
 
-  LanguagesViewModel languagesViewModel;
 
   @override
   void initState() {
     super.initState();
-    languagesViewModel = context.cubit<LanguagesViewModel>();
-    languagesViewModel.loadProjectLanguages();
+    final project = context.cubit<ProjectsViewModel>().state.selectedProject;
+    final languagesViewModel = context.cubit<LanguagesViewModel>();
+    languagesViewModel.loadProjectLanguages(project);
   }
 
   @override

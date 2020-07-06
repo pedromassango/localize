@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/application/auth/auth_state_view_model.dart';
@@ -26,13 +26,20 @@ class SideBar extends StatelessWidget {
       color: context.primaryColor,
       child: Column(
         children: [
-          Logo(),
+          CubitConsumer<ProjectsViewModel, ProjectsState>(
+            listener: (c, s) {
+
+            },
+            builder: (c, s) {
+              print('CubitConsumer called: ${s.isLoadingProjects}');
+              return Logo();
+            },
+          ),
           Divider(color: Colors.black12),
           CubitBuilder<ProjectsViewModel, ProjectsState>(
-            buildWhen: (p, n) => p.projects.length != n.projects.length,
             builder: (context, state) {
               print('ProjectsViewModel updated.... ${state.isLoadingProjects}');
-              if (state.isLoadingProjects) {
+              if (state.isLoadingProjects == null || state.isLoadingProjects) {
                 return SizedBox(height: 1.5, child: LinearProgressIndicator());
               } else if (state.hasLoadingProjectsFailure) {
                 return GestureDetector(

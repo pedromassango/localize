@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/domain/core/failures.dart';
@@ -23,19 +23,20 @@ abstract class LanguagesState with _$LanguagesState {
 
 class LanguagesViewModel extends Cubit<LanguagesState> {
 
-  LanguagesViewModel({this.project, this.languageRepository}) :
+  LanguagesViewModel({@required this.languageRepository}) :
         assert(languageRepository != null),
         super(LanguagesState());
 
-  final Project project;
   final LanguageRepository languageRepository;
 
-  void saveLanguage(Language language) {
-    emit(state.copyWith.call(languages: state.languages..add(language)));
+  void saveLanguage(Project project, Language language) {
+    final languages = List.of(state.languages, growable: true);
+    languages.add(language);
+    emit(state.copyWith.call(languages: languages));
     languageRepository.saveLanguage(project.id, language);
   }
 
-  Future loadProjectLanguages() async {
+  Future loadProjectLanguages(Project project) async {
     emit(state.copyWith.call(
       isLoadingLanguages: true,
       loadLanguageFailure: null

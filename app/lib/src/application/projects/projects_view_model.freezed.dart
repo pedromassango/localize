@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 // GENERATED CODE - DO NOT MODIFY BY HAND
@@ -147,7 +147,7 @@ class __$ProjectsStateCopyWithImpl<$Res>
 }
 
 class _$_ProjectsState implements _ProjectsState {
-  _$_ProjectsState(
+  const _$_ProjectsState(
       {this.projects = const [],
       this.selectedProject,
       this.loadProjectsFailure,
@@ -203,7 +203,7 @@ class _$_ProjectsState implements _ProjectsState {
 }
 
 abstract class _ProjectsState implements ProjectsState {
-  factory _ProjectsState(
+  const factory _ProjectsState(
       {List<Project> projects,
       Project selectedProject,
       NetworkFailure loadProjectsFailure,

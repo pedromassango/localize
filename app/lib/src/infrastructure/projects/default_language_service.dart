@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/domain/core/failures.dart';
@@ -17,7 +17,10 @@ class DefaultLanguageService extends LanguageService {
 
   @override
   Future<Either<NetworkFailure, Unit>> saveLanguage(UniqueId projectId, Language language) async {
-    _localSource[projectId].add(language);
+    final languages = List.of([], growable: true);
+    languages.addAll(_localSource[projectId]);
+    languages.add(language);
+    _localSource[projectId] = languages;
     return right(unit);
   }
 
