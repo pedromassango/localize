@@ -1,12 +1,12 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 3/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/application/projects/projects_view_model.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
-import 'package:flutter_modular/flutter_modular.dart';
+import 'package:flutter_cubit/flutter_cubit.dart';
 
 class NewProjectDialog extends StatefulWidget {
   @override
@@ -20,7 +20,7 @@ class _NewProjectDialogState extends State<NewProjectDialog> {
   void _onCreateProject(BuildContext context) {
     if (_projectNameController.text.trim().isNotEmpty &&
         _projectNameController.text.length > 1) {
-      Modular.get<ProjectsViewModel>().saveProject(_projectNameController.text);
+      context.cubit<ProjectsViewModel>().saveProject(_projectNameController.text);
       context.pop();
     }
   }

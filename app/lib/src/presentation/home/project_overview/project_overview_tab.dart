@@ -1,13 +1,13 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
-import 'package:app/src/application/projects/project_overview/project_overview_view_model.dart';
+import 'package:app/src/application/projects/languages_view_model.dart';
 import 'package:app/src/application/projects/projects_view_model.dart';
 import 'package:app/src/domain/core/language.dart';
 import 'package:flutter/material.dart';
-import 'package:flutter_mobx/flutter_mobx.dart';
+import 'package:flutter_cubit/flutter_cubit.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 import 'package:build_context/build_context.dart';
 import 'package:percent_indicator/circular_percent_indicator.dart';
@@ -20,14 +20,13 @@ class ProjectOverViewTab extends StatefulWidget {
 }
 
 class _ProjectOverViewTabState extends State<ProjectOverViewTab> {
-  final projectsViewModel = Modular.get<ProjectsViewModel>();
 
-  final languagesViewModel = Modular.get<ProjectOverviewViewModel>();
 
   @override
   void initState() {
     super.initState();
-    languagesViewModel.loadProjectLanguages(projectsViewModel.selectedProject.id);
+
+    print('OverviewTab initState');
   }
 
   @override
@@ -39,11 +38,11 @@ class _ProjectOverViewTabState extends State<ProjectOverViewTab> {
         children: [
           SizedBox(
             width: 200,
-            child: Observer(
-              builder: (context) {
+            child: CubitBuilder<ProjectsViewModel, ProjectsState>(
+              builder: (context, state) {
                 return TextFormField(
                   readOnly: true,
-                  controller: TextEditingController(text: projectsViewModel.selectedProject.name),
+                  controller: TextEditingController(text: state.selectedProject.name),
                   decoration: InputDecoration(
                     labelText: 'Project Name',
                     border: OutlineInputBorder()
@@ -52,7 +51,6 @@ class _ProjectOverViewTabState extends State<ProjectOverViewTab> {
               },
             ),
           ),
-
           Padding(
             padding: const EdgeInsets.only(top: 32, bottom: 16),
             child: Text('Supported Languages',
@@ -61,13 +59,13 @@ class _ProjectOverViewTabState extends State<ProjectOverViewTab> {
           ),
           SizedBox.fromSize(
             size: Size(context.mediaQuerySize.width, 270),
-            child: Observer(
-              builder: (context) {
+            child: CubitBuilder<LanguagesViewModel, LanguagesState>(
+              builder: (context, state) {
                 return ListView(
                   scrollDirection: Axis.horizontal,
                   padding: EdgeInsets.all(8),
-                  semanticChildCount: languagesViewModel.languages.length,
-                  children: <Widget>[AddLanguageButtonCard()]..addAll(languagesViewModel.languages.map((element) {
+                  semanticChildCount: state.languages.length,
+                  children: <Widget>[AddLanguageButtonCard()]..addAll(state.languages.map((element) {
                     return _LanguageInfoListItem(language: element);
                   }).toList()),
                 );

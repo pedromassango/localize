@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 6/7/2020.
  */
 
 import 'package:app/src/domain/core/failures.dart';
@@ -18,7 +18,7 @@ class DefaultProjectService extends ProjectService {
 
 }
 
-final _fakeProjects = [
+final _fakeProjects = <Project>[
   Project(id: UniqueId.fromString('1'), name: 'Localize'),
   Project(id: UniqueId.fromString('2'), name: 'Facebook'),
   Project(id: UniqueId.fromString('3'), name: 'Flutter Gallery'),
