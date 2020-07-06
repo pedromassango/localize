@@ -28,6 +28,8 @@ class _ProjectContentViewState extends State<ProjectContentView>
 
   final _tabs = ['Overview', 'Messages'];
 
+  int _currentTabIndex = 0;
+
   @override
   Widget build(BuildContext context) {
     return DefaultTabController(
@@ -37,9 +39,10 @@ class _ProjectContentViewState extends State<ProjectContentView>
           tabTitles: _tabs,
           projectName: widget.project.name,
           preferredSize: Size(context.mediaQuerySize.width, 130),
+          onTabSelected: (index) => setState(() => _currentTabIndex = index),
         ),
-        body: TabBarView(
-          physics: NeverScrollableScrollPhysics(),
+        body: IndexedStack(
+          index: _currentTabIndex,
           children: [
             ProjectOverViewTab(),
             ProjectMessagesTab(),
@@ -53,6 +56,7 @@ class _ProjectContentViewState extends State<ProjectContentView>
 class _ProjectToolBar extends PreferredSize {
   final String projectName;
   final List<String> tabTitles;
+  final ValueChanged<int> onTabSelected;
 
   @override
   final Size preferredSize;
@@ -61,6 +65,7 @@ class _ProjectToolBar extends PreferredSize {
     this.preferredSize,
     this.projectName,
     this.tabTitles,
+    this.onTabSelected,
   });
 
   @override
@@ -90,6 +95,7 @@ class _ProjectToolBar extends PreferredSize {
                   indicatorPadding: EdgeInsets.all(0.0),
                   indicatorColor: context.primaryColor,
                   unselectedLabelColor: context.primaryColor,
+                  onTap: onTabSelected,
                   tabs: tabTitles.map((title) {
                     return Tab(
                       text: title,
