@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 1/7/2020.
+ * Created by Pedro Massango on 7/7/2020.
  */
 
 import 'package:app/src/domain/core/value_objects/value_object.dart';
@@ -25,4 +25,13 @@ class UniqueId extends ValueObject<String> {
   const UniqueId._(this.value);
 
   final Either<ValueFailure<String>, String> value;
+
+  @override
+  bool operator ==(Object o) {
+    return identical(this, o) ||
+    o is UniqueId && o.value.getOrElse(() => '') == value.getOrElse(() => '');
+  }
+
+  @override
+  int get hashCode => getOrElse('').hashCode;
 }
