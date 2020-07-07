@@ -1,10 +1,10 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 7/7/2020.
+ * Created by Pedro Massango on 8/7/2020.
  */
 
 import 'package:app/src/application/projects/languages_view_model.dart';
-import 'package:app/src/domain/core/value_objects/message.dart';
+import 'package:app/src/domain/core/message.dart';
 import 'package:app/src/domain/core/value_objects/unique_id.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cubit/flutter_cubit.dart';
@@ -39,7 +39,10 @@ class ProjectMessagesTab extends StatelessWidget {
                 scrollDirection: Axis.horizontal,
                 itemCount: state.languages.length,
                 itemBuilder: (context, index) {
-                  return LanguageColumn(language: state.languages[index]);
+                  return LanguageColumn(
+                    language: state.languages[index],
+                    projectMessages: _projectMessages,
+                  );
                 },
               );
             },

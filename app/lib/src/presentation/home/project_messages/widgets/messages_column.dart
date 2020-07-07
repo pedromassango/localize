@@ -1,9 +1,9 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 7/7/2020.
+ * Created by Pedro Massango on 8/7/2020.
  */
 
-import 'package:app/src/domain/core/value_objects/message.dart';
+import 'package:app/src/domain/core/message.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
 import 'package:flutter/rendering.dart';
@@ -78,38 +78,35 @@ class __MessageListItemState extends State<_MessageListItem> {
         onExit: (_) => setState(() => _isMouseHover = false),
         child: SizedBox.fromSize(
           size: Size(double.maxFinite, 100),
-          child: Padding(
-            padding: const EdgeInsets.only(right: 0),
-            child: Row(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Padding(
-                  padding: const EdgeInsets.all(16),
-                  child: Column(
-                    mainAxisAlignment: MainAxisAlignment.start,
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Text(message.name),
-                      Text(message.description, style: context.textTheme.caption),
-                    ],
-                  ),
+          child: Row(
+            crossAxisAlignment: CrossAxisAlignment.start,
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+            children: [
+              Padding(
+                padding: const EdgeInsets.all(16),
+                child: Column(
+                  mainAxisAlignment: MainAxisAlignment.start,
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Text(message.name),
+                    Text(message.description, style: context.textTheme.caption),
+                  ],
                 ),
-                Visibility(
-                  maintainSize: true,
-                  maintainState: true,
-                  maintainAnimation: true,
-                  visible: _isMouseHover,
-                  child: IconButton(
-                    icon: Icon(Icons.edit),
-                    iconSize: 20,
-                    splashRadius: 16,
-                    color: context.primaryColor,
-                    onPressed: () {},
-                  ),
-                )
-              ],
-            ),
+              ),
+              Visibility(
+                maintainSize: true,
+                maintainState: true,
+                maintainAnimation: true,
+                visible: _isMouseHover,
+                child: IconButton(
+                  icon: Icon(Icons.edit),
+                  iconSize: 20,
+                  splashRadius: 16,
+                  color: context.primaryColor,
+                  onPressed: () {},
+                ),
+              )
+            ],
           ),
         ),
       );
