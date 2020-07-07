@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 6/7/2020.
+ * Created by Pedro Massango on 7/7/2020.
  */
 
 import 'package:app/src/application/auth/auth_state_view_model.dart';
@@ -44,6 +44,7 @@ class SideBar extends StatelessWidget {
               }
               return Expanded(
                 child: ListView(
+                  padding: EdgeInsets.only(right: 8),
                   children: state.projects.map<Widget>((project) {
                     return _ProjectListItem(
                       project: project,
@@ -60,7 +61,12 @@ class SideBar extends StatelessWidget {
           Padding(
             padding: const EdgeInsets.fromLTRB(16, 8, 16, 16),
             child: CubitBuilder<AuthStateViewModel, AuthState>(
-              builder: (context, authState) => _AccountSection(authState: authState),
+              builder: (context, authState) {
+                if (!authState.isLoggedIn) {
+                  return SizedBox.shrink();
+                }
+                return _AccountSection(authState: authState);
+              },
             ),
           ),
         ],

@@ -35,5 +35,9 @@ class DefaultLanguageService extends LanguageService {
 }
 
 final _localSource = <UniqueId, List<Language>> {
-  UniqueId.fromString('1'): List.of([Language(code: 'pt', name: 'Portuguese'), Language(code: 'en', name: 'English')])
+  UniqueId.fromString('1'): List.of([
+    Language(code: 'pt', name: 'Portuguese'),
+    Language(code: 'en', name: 'English'),
+    Language(code: 'es', name: 'Spanish'),
+  ]),
 };

@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 6/7/2020.
+ * Created by Pedro Massango on 7/7/2020.
  */
 
 import 'package:app/src/domain/core/repositories/language_repository.dart';
@@ -12,7 +12,7 @@ import 'package:app/src/infrastructure/projects/default_project_repository.dart'
 import 'package:app/src/infrastructure/projects/default_project_service.dart';
 import 'package:app/src/presentation/auth/auth_page.dart';
 import 'package:app/src/application/auth/auth_state_view_model.dart';
-import 'package:app/src/presentation/home/home_module.dart';
+import 'package:app/src/presentation/home/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_modular/flutter_modular.dart';
 
@@ -37,7 +37,7 @@ class AppModule extends MainModule {
 
   @override
   List<Router> get routers => [
-    Router('/home', module: HomeModule()),
+    Router('/home', child: (_, __) => HomePage()),
     Router('/auth', child: (_, __) => AuthPage()),
   ];
 }
