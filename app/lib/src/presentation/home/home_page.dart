@@ -1,16 +1,14 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 6/7/2020.
+ * Created by Pedro Massango on 7/7/2020.
  */
 
 import 'package:app/src/application/auth/auth_state_view_model.dart';
 import 'package:app/src/application/projects/languages_view_model.dart';
 import 'package:app/src/application/projects/projects_view_model.dart';
-import 'package:app/src/domain/core/repositories/project_repository.dart';
 import 'package:app/src/presentation/home/widgets/project_content_view.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cubit/flutter_cubit.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 import 'package:build_context/build_context.dart';
 import 'widgets/side_bar.dart';
 

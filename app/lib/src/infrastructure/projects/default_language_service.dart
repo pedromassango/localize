@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 6/7/2020.
+ * Created by Pedro Massango on 7/7/2020.
  */
 
 import 'package:app/src/domain/core/failures.dart';
@@ -12,11 +12,7 @@ import 'package:dartz/dartz.dart';
 class DefaultLanguageService extends LanguageService {
   @override
   Future<Either<NetworkFailure, List<Language>>> loadProjectLanguages(UniqueId projectId) async {
-    print('Retrieve language for project(${projectId.getOrElse('')})...');
-
     final result = _localSource[projectId]?.toList() ?? <Language>[];
-
-    print('Retrieve language for project(${projectId.getOrElse('')}): Result: ${result.length}');
 
     return right(result);
   }

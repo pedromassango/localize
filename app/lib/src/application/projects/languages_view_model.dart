@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 6/7/2020.
+ * Created by Pedro Massango on 7/7/2020.
  */
 
 import 'package:app/src/domain/core/failures.dart';
@@ -33,7 +33,7 @@ class LanguagesViewModel extends Cubit<LanguagesState> {
   // This need to be called before using any other method inside of this class.
   Future onSelectedProjectChanged(Project selectedProject) async {
     emit(state.copyWith(project: selectedProject, languages: []));
-    await loadProjectLanguages();
+    await _loadProjectLanguages();
   }
 
   void saveLanguage(Language language) {
@@ -45,7 +45,7 @@ class LanguagesViewModel extends Cubit<LanguagesState> {
     languageRepository.saveLanguage(state.project.id, language);
   }
 
-  Future loadProjectLanguages() async {
+  Future _loadProjectLanguages() async {
     ArgumentError.checkNotNull(state.project != null);
 
     emit(state.copyWith.call(

@@ -1,17 +1,13 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 6/7/2020.
+ * Created by Pedro Massango on 7/7/2020.
  */
 
-import 'package:app/src/application/projects/languages_view_model.dart';
 import 'package:app/src/domain/core/project.dart';
-import 'package:app/src/domain/core/repositories/language_repository.dart';
 import 'package:app/src/presentation/home/project_messages/project_messages_tab.dart';
 import 'package:app/src/presentation/home/project_overview/project_overview_tab.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
-import 'package:flutter_cubit/flutter_cubit.dart';
-import 'package:flutter_modular/flutter_modular.dart';
 
 class ProjectContentView extends StatefulWidget {
   final Project project;
