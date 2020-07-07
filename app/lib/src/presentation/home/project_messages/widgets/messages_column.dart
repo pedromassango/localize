@@ -38,11 +38,14 @@ class MessagesColumn extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView.builder(
+            child: ListView.separated(
               itemCount: messages.length,
               itemBuilder: (context, index) {
                 final item = messages[index];
                 return _MessageListItem(message: item);
+              },
+              separatorBuilder: (context, index) {
+                return Container(color: Colors.grey.withOpacity(.2), height: 0.5);
               },
             ),
           ),
@@ -65,37 +68,53 @@ class __MessageListItemState extends State<_MessageListItem> {
   Message get message => widget.message;
 
   bool _isMouseHover = false;
+  bool _editEnabled = false;
 
   @override
   Widget build(BuildContext context) {
-    return MouseRegion(
-      onHover: (_) => setState(() => _isMouseHover = true),
-      onExit: (_) => setState(() => _isMouseHover = false),
-      child: ListTile(
-        contentPadding: EdgeInsets.fromLTRB(4, 4, 0, 4),
-        mouseCursor: MouseCursor.defer,
-          title: Text(message.name, style: TextStyle(color: Colors.red)),
-          leading: Visibility(
-            visible: _isMouseHover,
-            child: IconButton(
-              icon: Icon(Icons.delete),
-              iconSize: 20,
-              splashRadius: 16,
-              color: Colors.red,
-              onPressed: () {},
+    if (!_editEnabled) {
+      return MouseRegion(
+        onHover: (_) => setState(() => _isMouseHover = true),
+        onExit: (_) => setState(() => _isMouseHover = false),
+        child: SizedBox.fromSize(
+          size: Size(double.maxFinite, 100),
+          child: Padding(
+            padding: const EdgeInsets.only(right: 0),
+            child: Row(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Padding(
+                  padding: const EdgeInsets.all(16),
+                  child: Column(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Text(message.name),
+                      Text(message.description, style: context.textTheme.caption),
+                    ],
+                  ),
+                ),
+                Visibility(
+                  maintainSize: true,
+                  maintainState: true,
+                  maintainAnimation: true,
+                  visible: _isMouseHover,
+                  child: IconButton(
+                    icon: Icon(Icons.edit),
+                    iconSize: 20,
+                    splashRadius: 16,
+                    color: context.primaryColor,
+                    onPressed: () {},
+                  ),
+                )
+              ],
             ),
           ),
-          trailing: Visibility(
-            visible: _isMouseHover,
-            child: IconButton(
-              icon: Icon(Icons.edit),
-              iconSize: 20,
-              splashRadius: 16,
-              color: context.primaryColor,
-              onPressed: () {},
-            ),
-          ),
-      ),
-    );
+        ),
+      );
+    }
+    //TODO: return a widget to edit the current message
+    return SizedBox.shrink();
   }
 }
