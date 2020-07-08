@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 8/7/2020.
  */
 
 import 'package:app/src/domain/core/entity.dart';
@@ -13,13 +13,24 @@ class Language extends Entity {
   final int messagesCount;
 
   @required
-  UniqueId get id => UniqueId.fromString(code);
+  final UniqueId id;
 
-  const Language({
+  Language({
     @required this.code,
     @required this.name,
     this.messagesCount = 15,
-  });
+  }) : id = UniqueId.fromString(code);
 
   String get nameAndCode => '$name - ${code.toUpperCase()}';
+
+  @override
+  bool operator ==(Object o) {
+    return identical(this, o) || o is Language &&
+      id == o.id && code == o.code && name == o.name &&
+        messagesCount == o.messagesCount;
+  }
+
+  @override
+  int get hashCode => code.hashCode ^ name.hashCode ^
+  messagesCount.hashCode ^ id.hashCode;
 }

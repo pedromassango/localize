@@ -12,8 +12,9 @@ import 'column_header.dart';
 
 class MessagesColumn extends StatelessWidget {
   final List<Message> messages;
+  final ScrollController controller;
 
-  const MessagesColumn({@required this.messages});
+  const MessagesColumn({@required this.messages, this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -39,6 +40,8 @@ class MessagesColumn extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
+              key: ObjectKey(messages),
+              controller: controller,
               itemCount: messages.length,
               itemBuilder: (context, index) {
                 final item = messages[index];

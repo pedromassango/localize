@@ -7,6 +7,7 @@ import 'package:app/src/domain/core/language.dart';
 import 'package:app/src/domain/core/message.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
+import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import 'column_header.dart';
@@ -14,8 +15,9 @@ import 'column_header.dart';
 class LanguageColumn extends StatelessWidget {
   final Language language;
   final List<Message> projectMessages;
+  final ScrollController controller;
 
-  const LanguageColumn({this.language, this.projectMessages});
+  const LanguageColumn({this.language, this.projectMessages, this.controller});
 
   @override
   Widget build(BuildContext context) {
@@ -48,6 +50,8 @@ class LanguageColumn extends StatelessWidget {
           ),
           Expanded(
             child: ListView.separated(
+              key: ObjectKey(language),
+              controller: controller,
               itemCount: projectMessages.length,
               itemBuilder: (context, index) {
                 return _LanguageMessageListItem(message: projectMessages[index]);

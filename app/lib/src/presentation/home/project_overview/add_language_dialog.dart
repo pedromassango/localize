@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 6/7/2020.
+ * Created by Pedro Massango on 8/7/2020.
  */
 
 import 'package:app/src/application/projects/languages_view_model.dart';
@@ -18,7 +18,7 @@ class NewLanguageDialog extends StatefulWidget {
 class _NewLanguageDialogState extends State<NewLanguageDialog> {
 
   Language _selectedLanguage;
-  static const _supportedLanguages = allLanguages;
+  final _supportedLanguages = allLanguages;
 
   void _onCreateLanguage(BuildContext context) {
     if (_selectedLanguage != null) {

@@ -22,6 +22,7 @@ dependencies:
   percent_indicator: ^2.1.5
   cubit: ^0.2.0-dev.1
   flutter_cubit: ^0.2.0-dev.1
+  linked_scroll_controller: ^0.1.2
 
 dev_dependencies:
   flutter_test:
