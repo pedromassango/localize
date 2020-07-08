@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 7/7/2020.
+ * Created by Pedro Massango on 8/7/2020.
  */
 
 import 'package:app/src/domain/core/project.dart';
@@ -34,15 +34,18 @@ class _ProjectContentViewState extends State<ProjectContentView>
         appBar: _ProjectToolBar(
           tabTitles: _tabs,
           projectName: widget.project.name,
-          preferredSize: Size(context.mediaQuerySize.width, 130),
+          preferredSize: Size(context.mediaQuerySize.width, 41),
           onTabSelected: (index) => setState(() => _currentTabIndex = index),
         ),
-        body: IndexedStack(
-          index: _currentTabIndex,
-          children: [
-            ProjectOverViewTab(),
-            ProjectMessagesTab(),
-          ],
+        body: Padding(
+          padding: const EdgeInsets.only(top: 16),
+          child: IndexedStack(
+            index: _currentTabIndex,
+            children: [
+              ProjectOverViewTab(),
+              ProjectMessagesTab(),
+            ],
+          ),
         )
       ),
     );
@@ -69,72 +72,32 @@ class _ProjectToolBar extends PreferredSize {
     return Container(
       height: preferredSize.height,
       width: preferredSize.width,
-      margin: EdgeInsets.only(top: 0, left: 0, right: 32),
+      padding: EdgeInsets.only(right: 32),
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Row(
-            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-            children: [
-              SizedBox(
-                height: 70,
-                width: preferredSize.width * .3,
-                child: TabBar(
-                  labelColor: context.primaryColor,
-                  indicatorWeight: 3,
-                  isScrollable: false,
-                  indicatorPadding: EdgeInsets.all(0.0),
-                  indicatorColor: context.primaryColor,
-                  unselectedLabelColor: context.primaryColor,
-                  onTap: onTabSelected,
-                  tabs: tabTitles.map((title) {
-                    return Tab(
-                      text: title,
-                    );
-                  }).toList(),
-                ),
-              ),
-              _Buttons(),
-            ],
+          SizedBox(
+            height: 40,
+            width: preferredSize.width * .3,
+            child: TabBar(
+              labelColor: context.primaryColor,
+              indicatorWeight: 3,
+              isScrollable: false,
+              indicatorPadding: EdgeInsets.all(0.0),
+              indicatorColor: context.primaryColor,
+              unselectedLabelColor: context.primaryColor,
+              onTap: onTabSelected,
+              tabs: tabTitles.map((title) {
+                return Tab(
+                  text: title,
+                );
+              }).toList(),
+            ),
           ),
+          Container(width: double.maxFinite, height: 1, color: Colors.grey.withOpacity(.2))
         ],
       ),
-    );
-  }
-}
-
-class _Buttons extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return Row(
-      children: [
-        SizedBox.fromSize(
-          size: Size(130, 40),
-          child: RaisedButton(
-            color: context.primaryColor,
-            splashColor: Colors.white12,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4)
-            ),
-            child: Text('New Language', style: TextStyle(color: Colors.white)),
-            onPressed: () {},
-          ),
-        ),
-        Padding(padding: EdgeInsets.only(left: 8)),
-        SizedBox(
-          height: 40,
-          child: RaisedButton(
-            color: context.primaryColor,
-            splashColor: Colors.white12,
-            shape: RoundedRectangleBorder(
-              borderRadius: BorderRadius.circular(4)
-            ),
-            child: Text('Import Language File', style: TextStyle(color: Colors.white)),
-            onPressed: () {},
-          ),
-        ),
-      ],
     );
   }
 }

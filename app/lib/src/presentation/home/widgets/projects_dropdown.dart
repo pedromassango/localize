@@ -34,13 +34,25 @@ class _ProjectsDropdownButtonState extends State<ProjectsDropdownButton> {
     );
   }
 
+  void _updateDropdownSelectedItem(Object value) {
+    setState(() => _selectedProject = value);
+  }
+
   void _onItemSelected(Object value) {
     if (value is Project) {
-      setState(() => _selectedProject = value);
+      _updateDropdownSelectedItem(value);
       context.cubit<ProjectsViewModel>().selectProject(value);
     } else {
       _onCreateNewProject();
     }
+  }
+
+  @override
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      _updateDropdownSelectedItem(state.selectedProject);
+    });
   }
 
   @override
