@@ -18,7 +18,7 @@ class MessagesColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderSide = BorderSide(color: Colors.grey);
+    final borderSide = BorderSide(color: Colors.grey.withOpacity(.5));
 
     return Container(
       width: 300,
