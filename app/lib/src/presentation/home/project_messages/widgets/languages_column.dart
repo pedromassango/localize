@@ -7,7 +7,6 @@ import 'package:app/src/domain/core/language.dart';
 import 'package:app/src/domain/core/message.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
-import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import 'column_header.dart';
@@ -126,6 +125,7 @@ class __LanguageMessageListItemState extends State<_LanguageMessageListItem> {
                   child: TextField(
                     enabled: _enableTextField,
                     maxLines: 4,
+                    controller: _controller,
                     focusNode: _editFocusNode,
                     style: context.textTheme.bodyText2,
                     decoration: InputDecoration(
