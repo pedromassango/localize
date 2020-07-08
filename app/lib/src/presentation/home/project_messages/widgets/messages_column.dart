@@ -28,10 +28,15 @@ class MessagesColumn extends StatelessWidget {
       child: Column(
         children: [
           ColumnHeader(
-            child: RaisedButton(
-              elevation: 0.0,
-              child: Text('Add Message'),
-              onPressed: () {},
+            child: Container(
+              decoration: BoxDecoration(
+                color: Colors.black12,
+                border: Border(
+                  top: borderSide,
+                  bottom: borderSide
+                )
+              ),
+                child: Center(child: Text("Messages")),
             ),
           ),
           Expanded(

@@ -69,33 +69,47 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
 
   @override
   Widget build(BuildContext context) {
-    return Row(
+    return Column(
       children: [
-        MessagesColumn(
-          messages: _projectMessages,
-          controller: _messages,
+        RaisedButton(
+          child: Text('Add New language'),
+          onPressed: () {},
         ),
         Expanded(
-          child: CubitBuilder<LanguagesViewModel, LanguagesState>(
-            builder: (context, state) {
-              if (state.isLoadingLanguages) {
-                return SizedBox.shrink();
-              } else if (state.loadLanguageFailure != null) {
-                return SizedBox.shrink();
-              }
-              return ListView.builder(
-                scrollDirection: Axis.horizontal,
-                itemCount: state.languages.length,
-                itemBuilder: (context, index) {
-                  final language = state.languages[index];
-                  return LanguageColumn(
-                    language: language,
-                    projectMessages: _projectMessages,
-                    controller: _getCtl(language),
-                  );
-                },
-              );
-            },
+          child: Row(
+            children: [
+              MessagesColumn(
+                messages: _projectMessages,
+                controller: _messages,
+              ),
+              Expanded(
+                child: CubitBuilder<LanguagesViewModel, LanguagesState>(
+                  builder: (context, state) {
+                    if (state.isLoadingLanguages) {
+                      return SizedBox.shrink();
+                    } else if (state.loadLanguageFailure != null) {
+                      return SizedBox.shrink();
+                    }
+                    final languagesSize = state.languages.length;
+                    return ListView.separated(
+                      scrollDirection: Axis.horizontal,
+                      itemCount: languagesSize,
+                      itemBuilder: (context, index) {
+                        final language = state.languages[index];
+                        return LanguageColumn(
+                          language: language,
+                          projectMessages: _projectMessages,
+                          controller: _getCtl(language),
+                        );
+                      },
+                      separatorBuilder: (c, i) {
+                        return Container(width: .25, color: Colors.grey.withOpacity(0.5));
+                      },
+                    );
+                  },
+                ),
+              ),
+            ],
           ),
         ),
       ],

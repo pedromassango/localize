@@ -35,7 +35,8 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: TopAppBar(),
-      body: SizedBox.expand(
+      body: Padding(
+        padding: const EdgeInsets.symmetric(horizontal: AppStyle.pageContentPadding, vertical: 32),
         child: CubitConsumer<ProjectsViewModel, ProjectsState>(
           buildWhen: (prevState, newState) => prevState.selectedProject != newState.selectedProject,
           listenWhen: (prevState, newState) => prevState.selectedProject != newState.selectedProject,
@@ -58,13 +59,13 @@ class _HomePageState extends State<HomePage> {
 class TopAppBar extends PreferredSize {
 
   @override
-  Size get preferredSize => Size(double.infinity, 70);
+  Size get preferredSize => Size(double.infinity, 50);
 
   @override
   Widget build(BuildContext context) {
     return Container(
       color: context.primaryColor,
-      padding: const EdgeInsets.all(8),
+      padding: const EdgeInsets.symmetric(horizontal: AppStyle.pageContentPadding),
       child: Row(
         children: [
           AppLogo(),
