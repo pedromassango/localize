@@ -16,21 +16,16 @@ class LanguageColumn extends StatelessWidget {
   final List<Message> projectMessages;
   final ScrollController controller;
 
-  const LanguageColumn({this.language, this.projectMessages, this.controller});
+  const LanguageColumn({
+    this.language,
+    this.projectMessages,
+    this.controller,
+  });
 
   @override
   Widget build(BuildContext context) {
-    final borderSide = BorderSide(color: Colors.grey.withOpacity(.5));
-
     return Container(
       width: 390,
-      decoration: BoxDecoration(
-          border: Border(
-            top: BorderSide(),
-            bottom: borderSide,
-            right: borderSide,
-          )
-      ),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [

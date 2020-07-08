@@ -28,7 +28,10 @@ class _ProjectContentViewState extends State<ProjectContentView>
 
   @override
   Widget build(BuildContext context) {
+    final borderSide = BorderSide(color: Colors.grey.withOpacity(.5), width: 0.5);
+
     return DefaultTabController(
+      initialIndex: _currentTabIndex,
       length: _tabs.length,
       child: Scaffold(
         appBar: _ProjectToolBar(
@@ -37,8 +40,15 @@ class _ProjectContentViewState extends State<ProjectContentView>
           preferredSize: Size(context.mediaQuerySize.width, 41),
           onTabSelected: (index) => setState(() => _currentTabIndex = index),
         ),
-        body: Padding(
-          padding: const EdgeInsets.only(top: 16),
+        body: Container(
+          padding: const EdgeInsets.only(top: 32),
+          decoration: BoxDecoration(
+            border: Border(
+              bottom: borderSide,
+              left: borderSide,
+              right: borderSide
+            )
+          ),
           child: IndexedStack(
             index: _currentTabIndex,
             children: [
@@ -72,7 +82,6 @@ class _ProjectToolBar extends PreferredSize {
     return Container(
       height: preferredSize.height,
       width: preferredSize.width,
-      padding: EdgeInsets.only(right: 32),
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,

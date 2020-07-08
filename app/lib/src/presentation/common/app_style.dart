@@ -17,3 +17,7 @@ class AppIcons {
   static const IconData google = IconData(0xf1a0, fontFamily: _kFontFam, fontPackage: _kFontPkg);
   static const IconData trash = IconData(0xf1f8, fontFamily: _kFontFam, fontPackage: _kFontPkg);
 }
+
+class AppStyle {
+  static const double pageContentPadding = 100.0;
+}

@@ -18,16 +18,12 @@ class MessagesColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderSide = BorderSide(color: Colors.grey.withOpacity(.5));
+    final borderSide = BorderSide(color: Colors.grey.withOpacity(.5), width: 0.5);
 
     return Container(
       width: 300,
       decoration: BoxDecoration(
-          border: Border(
-            right: borderSide,
-            top: BorderSide(),
-            bottom: borderSide,
-          )
+          border: Border(right: borderSide)
       ),
       child: Column(
         children: [
