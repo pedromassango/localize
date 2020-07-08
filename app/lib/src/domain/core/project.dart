@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 2/7/2020.
+ * Created by Pedro Massango on 8/7/2020.
  */
 
 import 'package:app/src/domain/core/entity.dart';
@@ -16,4 +16,14 @@ class Project extends Entity {
     @required this.id,
     @required this.name,
   });
+
+  @override
+  bool operator ==(Object o) {
+    return identical(this, o) ||
+      o is Project && id == o.id && name == o.name;
+  }
+
+  @override
+  int get hashCode => id.hashCode ^ name.hashCode;
+
 }

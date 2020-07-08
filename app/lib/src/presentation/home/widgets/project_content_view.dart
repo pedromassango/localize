@@ -69,14 +69,11 @@ class _ProjectToolBar extends PreferredSize {
     return Container(
       height: preferredSize.height,
       width: preferredSize.width,
-      margin: EdgeInsets.only(top: 28, left: 24, right: 32),
+      margin: EdgeInsets.only(top: 0, left: 0, right: 32),
       color: Colors.white,
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          Text(projectName,
-            style: context.textTheme.headline6.copyWith(fontSize: 24, fontWeight: FontWeight.bold),
-          ),
           Row(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
@@ -87,7 +84,6 @@ class _ProjectToolBar extends PreferredSize {
                   labelColor: context.primaryColor,
                   indicatorWeight: 3,
                   isScrollable: false,
-                  physics: NeverScrollableScrollPhysics(),
                   indicatorPadding: EdgeInsets.all(0.0),
                   indicatorColor: context.primaryColor,
                   unselectedLabelColor: context.primaryColor,

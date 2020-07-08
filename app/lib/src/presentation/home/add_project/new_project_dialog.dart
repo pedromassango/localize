@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 6/7/2020.
+ * Created by Pedro Massango on 8/7/2020.
  */
 
 import 'package:app/src/application/projects/projects_view_model.dart';
@@ -79,33 +79,6 @@ class _NewProjectDialogState extends State<NewProjectDialog> {
             ],
           ),
         ),
-      ),
-    );
-  }
-}
-
-class AddNewProjectButton extends StatelessWidget {
-  @override
-  Widget build(BuildContext context) {
-    return SizedBox(
-      height: 50,
-      child: MaterialButton(
-        child: Row(
-          children: [
-            Padding(
-              padding: const EdgeInsets.only(right: 16),
-              child: Icon(Icons.add, color: Colors.white54),
-            ),
-            Text('New Project', style: context.textTheme.bodyText2.copyWith(
-                color: Colors.white54
-            )),
-          ],
-        ),
-        onPressed: () {
-          showDialog(context: context,
-            builder: (context) => NewProjectDialog()
-          );
-        },
       ),
     );
   }
