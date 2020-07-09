@@ -39,10 +39,10 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
   ];
 
   LinkedScrollControllerGroup _controllersGroup;
-  ScrollController _messages;
+  ScrollController _messagesController;
   Map<Object, ScrollController> _controllersByLanguageId = {};
 
-  ScrollController _getCtl(Language lang) {
+  ScrollController _getScrollController(Language lang) {
     if (_controllersByLanguageId.containsKey(lang.id)) {
       return _controllersByLanguageId[lang.id];
     }
@@ -56,7 +56,7 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
   void initState() {
     super.initState();
     _controllersGroup = LinkedScrollControllerGroup();
-    _messages = _controllersGroup.addAndGet();
+    _messagesController = _controllersGroup.addAndGet();
   }
 
   @override
@@ -64,7 +64,7 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
     for (final c in _controllersByLanguageId.values) {
       c.dispose();
     }
-    _messages.dispose();
+    _messagesController.dispose();
     super.dispose();
   }
 
@@ -102,7 +102,7 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
             children: [
               MessagesColumn(
                 messages: _projectMessages,
-                controller: _messages,
+                controller: _messagesController,
               ),
               Expanded(
                 child: CubitBuilder<LanguagesViewModel, LanguagesState>(
@@ -121,7 +121,7 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
                         return LanguageColumn(
                           language: language,
                           projectMessages: _projectMessages,
-                          controller: _getCtl(language),
+                          controller: _getScrollController(language),
                         );
                       },
                       separatorBuilder: (c, i) {

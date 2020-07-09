@@ -31,7 +31,7 @@ class App extends StatelessWidget {
         title: 'Localize',
         theme: ThemeData(
           primarySwatch: Colors.blue,
-          primaryColor: Color(0xff3d405b),
+          primaryColor: Color(0xff205072),
           scaffoldBackgroundColor: Colors.white,
           visualDensity: VisualDensity.adaptivePlatformDensity,
         ),
