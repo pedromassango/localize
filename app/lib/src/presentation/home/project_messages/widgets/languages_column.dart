@@ -1,13 +1,12 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 8/7/2020.
+ * Created by Pedro Massango on 9/7/2020.
  */
 
 import 'package:app/src/domain/core/language.dart';
 import 'package:app/src/domain/core/message.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
-import 'package:percent_indicator/linear_percent_indicator.dart';
 
 import 'column_header.dart';
 
@@ -24,21 +23,33 @@ class LanguageColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+
     return Container(
-      width: 390,
+      width: 350,
+      decoration: BoxDecoration(border: Border(top: ColumnHeader.borderSide)),
       child: Column(
         crossAxisAlignment: CrossAxisAlignment.start,
         children: [
-          LinearPercentIndicator(
-            percent: .55,
-            lineHeight: ColumnHeader.height,
-            padding: EdgeInsets.zero,
-            progressColor: context.primaryColor,
-            linearStrokeCap: LinearStrokeCap.butt,
-            center: Text(language.name,
-              style: context.textTheme.headline6.copyWith(
-                  fontSize: 16,
-                  color: Colors.white
+          ColumnHeader(
+            child: Container(
+              decoration: BoxDecoration(
+                border: Border(bottom: ColumnHeader.borderSide),
+              ),
+              padding: EdgeInsets.only(right: 16, left: 16),
+              child: Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Text(language.name,
+                    style: context.textTheme.headline6.copyWith(
+                        fontSize: 16,
+                        color: context.primaryColor,
+                    ),
+                  ),
+                  Text('${language.messagesCount}/173',
+                    style: context.textTheme.caption.copyWith(
+                    ),
+                  ),
+                ],
               ),
             ),
           ),
@@ -51,7 +62,7 @@ class LanguageColumn extends StatelessWidget {
                 return _LanguageMessageListItem(message: projectMessages[index]);
               },
               separatorBuilder: (context, index) {
-                return Container(color: Colors.grey.withOpacity(.2), height: 0.5);
+                return Container(color: Colors.grey.withOpacity(.2), height: .5);
               },
             ),
           ),

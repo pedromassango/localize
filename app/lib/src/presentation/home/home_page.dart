@@ -14,7 +14,6 @@ import 'package:app/src/presentation/home/widgets/projects_dropdown.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cubit/flutter_cubit.dart';
 import 'package:build_context/build_context.dart';
-import 'widgets/side_bar.dart';
 
 class HomePage extends StatefulWidget {
   static String route = '/home';

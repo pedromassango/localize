@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 8/7/2020.
+ * Created by Pedro Massango on 9/7/2020.
  */
 
 import 'package:app/src/application/projects/languages_view_model.dart';
@@ -13,6 +13,7 @@ import 'package:linked_scroll_controller/linked_scroll_controller.dart';
 
 import 'widgets/languages_column.dart';
 import 'widgets/messages_column.dart';
+import 'package:build_context/build_context.dart';
 
 class ProjectMessagesTab extends StatefulWidget {
 
@@ -71,9 +72,30 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
   Widget build(BuildContext context) {
     return Column(
       children: [
-        RaisedButton(
-          child: Text('Add New language'),
-          onPressed: () {},
+        Align(
+          alignment: Alignment.centerRight,
+          child: Padding(
+            padding: const EdgeInsets.fromLTRB(0, 0, 16, 16),
+            child: SizedBox(
+              height: 40,
+              child: ClipRRect(
+                borderRadius: BorderRadius.circular(4),
+                child: RaisedButton(
+                  color: context.primaryColor,
+                  child: Row(
+                    mainAxisSize: MainAxisSize.min,
+                    children: [
+                      Icon(Icons.add, color: Colors.white),
+                      Text('New Message', style: context.textTheme.caption.copyWith(
+                        color: Colors.white
+                      ),),
+                    ],
+                  ),
+                  onPressed: () {},
+                ),
+              ),
+            ),
+          ),
         ),
         Expanded(
           child: Row(
@@ -103,7 +125,7 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
                         );
                       },
                       separatorBuilder: (c, i) {
-                        return Container(width: .25, color: Colors.grey.withOpacity(0.5));
+                        return Container(width: .2, color: Colors.black12);
                       },
                     );
                   },

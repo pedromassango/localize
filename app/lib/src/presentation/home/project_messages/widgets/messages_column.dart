@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 8/7/2020.
+ * Created by Pedro Massango on 9/7/2020.
  */
 
 import 'package:app/src/domain/core/message.dart';
@@ -18,25 +18,26 @@ class MessagesColumn extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    final borderSide = BorderSide(color: Colors.grey.withOpacity(.5), width: 0.5);
+    final borderSide = ColumnHeader.borderSide;
 
     return Container(
       width: 300,
-      decoration: BoxDecoration(
-          border: Border(right: borderSide)
-      ),
+      decoration: BoxDecoration(border: Border(right: borderSide)),
       child: Column(
         children: [
           ColumnHeader(
             child: Container(
-              decoration: BoxDecoration(
-                color: Colors.black12,
-                border: Border(
-                  top: borderSide,
-                  bottom: borderSide
-                )
-              ),
-                child: Center(child: Text("Messages")),
+              decoration: BoxDecoration(color: context.primaryColor),
+                child: Align(
+                  alignment: Alignment.centerLeft,
+                  child: Padding(
+                    padding: const EdgeInsets.only(left: 16),
+                    child: Text(
+                      "Messages",
+                      style: TextStyle(color: Colors.white),
+                    ),
+                  ),
+                ),
             ),
           ),
           Expanded(
@@ -49,7 +50,7 @@ class MessagesColumn extends StatelessWidget {
                 return _MessageListItem(message: item);
               },
               separatorBuilder: (context, index) {
-                return Container(color: Colors.grey.withOpacity(.2), height: 0.5);
+                return Container(color: Colors.grey.withOpacity(.2), height: .5);
               },
             ),
           ),
