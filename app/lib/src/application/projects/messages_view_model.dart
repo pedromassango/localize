@@ -17,7 +17,9 @@ abstract class MessagesState with _$MessagesState {
   factory MessagesState({
     @Default([]) List<Message> projectMessages,
     @Default(false) bool loadingProjectMessages,
+    @Default(false) bool savingMessage,
     NetworkFailure loadMessagesFailure,
+    NetworkFailure saveMessageFailure,
     Project selectedProject,
   }) = _MessagesState;
 
@@ -25,6 +27,7 @@ abstract class MessagesState with _$MessagesState {
 
 extension Ext on MessagesState {
   bool get hasFailure => loadMessagesFailure != null;
+  bool get canCreateMessage => !loadingProjectMessages && !savingMessage;
 }
 
 class MessagesViewModel extends Cubit<MessagesState> {
@@ -36,6 +39,31 @@ class MessagesViewModel extends Cubit<MessagesState> {
   Future onSelectedProjectChanged(Project selectedProject) async {
     emit(state.copyWith.call(selectedProject: selectedProject, projectMessages: []));
     await loadProjectMessages();
+  }
+
+  Future createNewProjectMessage({String name, String description}) async {
+    ArgumentError.checkNotNull(state.selectedProject, 'selectedProject must not be null');
+
+    final message = Message(
+      projectId: state.selectedProject.id,
+      name: name,
+      description: description,
+    );
+
+    emit(state.copyWith.call(savingMessage: true));
+
+    final result = await _messagesRepository.saveProjectMessage(message);
+
+    var newState = state.copyWith.call(savingMessage:  false);
+
+    newState = result.fold(
+          (l) => newState.copyWith.call(loadMessagesFailure: l),
+          (r) {
+            final messages = List<Message>.from(state.projectMessages)..add(message);
+            return newState.copyWith.call(projectMessages: messages);
+          },
+    );
+    emit(newState);
   }
 
   Future loadProjectMessages() async {

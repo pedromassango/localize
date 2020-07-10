@@ -7,6 +7,7 @@ import 'package:app/src/application/projects/languages_view_model.dart';
 import 'package:app/src/application/projects/messages_view_model.dart';
 import 'package:app/src/domain/core/language.dart';
 import 'package:app/src/domain/core/message.dart';
+import 'package:app/src/presentation/home/project_messages/add_message/new_message_dialog.dart';
 import 'package:app/src/presentation/home/project_messages/widgets/error_view_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cubit/flutter_cubit.dart';
@@ -42,6 +43,12 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
     context.cubit<LanguagesViewModel>().loadProjectLanguages();
   }
 
+  void _onNewMessage(BuildContext context) {
+    showDialog(
+      context: context,
+      builder: (context) => NewMessageDialog(),
+    );
+  }
   @override
   void initState() {
     super.initState();
@@ -84,7 +91,9 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
                           ),),
                         ],
                       ),
-                      onPressed: state.loadingProjectMessages ?  null : () { },
+                      onPressed: !state.canCreateMessage
+                          ? null
+                          : () => _onNewMessage(context),
                     );
                   },
                 ),
@@ -95,9 +104,7 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
         Expanded(
           child: Row(
             children: [
-              MessagesColumn(
-                controller: _messagesController,
-              ),
+              MessagesColumn(controller: _messagesController),
               Expanded(
                 child: CubitBuilder<LanguagesViewModel, LanguagesState>(
                   builder: (context, state) {
