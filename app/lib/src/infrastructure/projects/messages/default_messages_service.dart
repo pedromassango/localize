@@ -30,10 +30,10 @@ class DefaultMessagesService extends MessagesService {
   Future<Either<NetworkFailure, Unit>> saveProjectMessage(Message message) async {
     final _currentMessages = _projectMessages[message.projectId];
     if (_currentMessages != null) {
-      final updatedMessages = List.from(_currentMessages)..add(message);
+      final updatedMessages = List<Message>.from(_currentMessages)..add(message);
       _projectMessages[message.projectId] = updatedMessages;
     } else {
-      _projectMessages[message.projectId] = List.from([message]);
+      _projectMessages[message.projectId] = List<Message>.from([message]);
     }
     return right(unit);
   }

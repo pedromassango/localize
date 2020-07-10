@@ -9,6 +9,7 @@ import 'package:app/src/application/projects/messages_view_model.dart';
 import 'package:app/src/application/projects/projects_view_model.dart';
 import 'package:app/src/domain/core/value_objects/unique_id.dart';
 import 'package:app/src/presentation/common/app_logo.dart';
+import 'package:app/src/presentation/common/app_style.dart';
 import 'package:app/src/presentation/common/circular_network_image.dart';
 import 'package:app/src/presentation/home/widgets/project_content_view.dart';
 import 'package:app/src/presentation/home/widgets/projects_dropdown.dart';
