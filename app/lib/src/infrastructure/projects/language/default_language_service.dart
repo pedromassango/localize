@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 7/7/2020.
+ * Created by Pedro Massango on 10/7/2020.
  */
 
 import 'package:app/src/domain/core/failures.dart';

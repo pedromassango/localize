@@ -5,7 +5,9 @@
 
 import 'package:app/src/application/projects/languages_view_model.dart';
 import 'package:app/src/application/projects/projects_view_model.dart';
+import 'package:app/src/application/projects/messages_view_model.dart';
 import 'package:app/src/domain/core/repositories/language_repository.dart';
+import 'package:app/src/domain/core/repositories/messages_repository.dart';
 import 'package:app/src/domain/core/repositories/project_repository.dart';
 import 'package:app/src/presentation/auth/auth_page.dart';
 import 'package:app/src/application/auth/auth_state_view_model.dart';
@@ -26,6 +28,7 @@ class App extends StatelessWidget {
         CubitProvider.value(value: authStateViewModel),
         CubitProvider.value(value: ProjectsViewModel(Modular.get<ProjectRepository>())),
         CubitProvider.value(value: LanguagesViewModel(languageRepository: Modular.get<LanguageRepository>())),
+        CubitProvider.value(value: MessagesViewModel(Modular.get<MessagesRepository>())),
       ],
       child: MaterialApp(
         title: 'Localize',
