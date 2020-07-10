@@ -1,15 +1,17 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 7/7/2020.
+ * Created by Pedro Massango on 10/7/2020.
  */
 
 import 'package:app/src/domain/core/repositories/language_repository.dart';
+import 'package:app/src/domain/core/repositories/messages_repository.dart';
 import 'package:app/src/domain/core/repositories/project_repository.dart';
-import 'package:app/src/domain/core/services/language_service.dart';
-import 'package:app/src/infrastructure/projects/default_language_repository.dart';
-import 'package:app/src/infrastructure/projects/default_language_service.dart';
+import 'package:app/src/infrastructure/projects/language/default_language_repository.dart';
 import 'package:app/src/infrastructure/projects/default_project_repository.dart';
 import 'package:app/src/infrastructure/projects/default_project_service.dart';
+import 'package:app/src/infrastructure/projects/language/default_language_service.dart';
+import 'package:app/src/infrastructure/projects/messages/default_messages_repository.dart';
+import 'package:app/src/infrastructure/projects/messages/default_messages_service.dart';
 import 'package:app/src/presentation/auth/auth_page.dart';
 import 'package:app/src/application/auth/auth_state_view_model.dart';
 import 'package:app/src/presentation/home/home_page.dart';
@@ -22,14 +24,14 @@ class AppModule extends MainModule {
   final AuthStateViewModel authStateViewModel;
 
   AppModule({
-    this.authStateViewModel,
+    @required this.authStateViewModel,
   });
 
   @override
   List<Bind> get binds => [
     Bind<ProjectRepository>((_) => DefaultProjectRepository(DefaultProjectService())),
-    Bind<LanguageService>((i) => DefaultLanguageService()),
-    Bind<LanguageRepository>((i) => DefaultLanguageRepository(i.get<LanguageService>())),
+    Bind<LanguageRepository>((_) => DefaultLanguageRepository(DefaultLanguageService())),
+    Bind<MessagesRepository>((_) => DefaultMessagesRepository(DefaultMessagesService())),
   ];
 
   @override

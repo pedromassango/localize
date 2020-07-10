@@ -1,20 +1,26 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 9/7/2020.
+ * Created by Pedro Massango on 10/7/2020.
  */
 
+import 'package:app/src/application/projects/messages_view_model.dart';
 import 'package:app/src/domain/core/message.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
 import 'package:flutter/rendering.dart';
+import 'package:flutter_cubit/flutter_cubit.dart';
 
 import 'column_header.dart';
+import 'error_view_widget.dart';
 
 class MessagesColumn extends StatelessWidget {
-  final List<Message> messages;
   final ScrollController controller;
 
-  const MessagesColumn({@required this.messages, this.controller});
+  const MessagesColumn({@required this.controller}) : assert(controller != null);
+
+  void _onReloadProjectMessages(BuildContext context) {
+    context.cubit<MessagesViewModel>().loadProjectMessages();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -41,16 +47,35 @@ class MessagesColumn extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView.separated(
-              key: ObjectKey(messages),
-              controller: controller,
-              itemCount: messages.length,
-              itemBuilder: (context, index) {
-                final item = messages[index];
-                return _MessageListItem(message: item);
-              },
-              separatorBuilder: (context, index) {
-                return Container(color: Colors.grey.withOpacity(.2), height: .5);
+            child: CubitBuilder<MessagesViewModel, MessagesState>(
+              builder: (context, state) {
+                if (state.loadingProjectMessages) {
+                  return Center(child: CircularProgressIndicator());
+                } else if (state.hasFailure) {
+                  return Center(
+                      child: ErrorViewWidget('Failed to load Messages',
+                        onTryAgain: () => _onReloadProjectMessages(context),
+                      ),
+                  );
+                } else if (state.projectMessages.isEmpty) {
+                  return Center(
+                      child: Text('This project does not have messages.',
+                        style: context.textTheme.caption,
+                      ),
+                  );
+                }
+                return ListView.separated(
+                  key: ObjectKey(state.projectMessages),
+                  controller: controller,
+                  itemCount: state.projectMessages.length,
+                  itemBuilder: (context, index) {
+                    final item = state.projectMessages[index];
+                    return _MessageListItem(message: item);
+                  },
+                  separatorBuilder: (context, index) {
+                    return Container(color: Colors.grey.withOpacity(.2), height: .5);
+                  },
+                );
               },
             ),
           ),

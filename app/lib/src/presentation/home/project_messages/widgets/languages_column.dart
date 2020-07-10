@@ -1,24 +1,25 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 9/7/2020.
+ * Created by Pedro Massango on 10/7/2020.
  */
 
+import 'package:app/src/application/projects/messages_view_model.dart';
 import 'package:app/src/domain/core/language.dart';
 import 'package:app/src/domain/core/message.dart';
+import 'package:app/src/domain/core/message_value.dart';
 import 'package:flutter/material.dart';
 import 'package:build_context/build_context.dart';
+import 'package:flutter_cubit/flutter_cubit.dart';
 
 import 'column_header.dart';
 
 class LanguageColumn extends StatelessWidget {
   final Language language;
-  final List<Message> projectMessages;
   final ScrollController controller;
 
   const LanguageColumn({
-    this.language,
-    this.projectMessages,
-    this.controller,
+    @required this.language,
+    @required this.controller,
   });
 
   @override
@@ -54,15 +55,23 @@ class LanguageColumn extends StatelessWidget {
             ),
           ),
           Expanded(
-            child: ListView.separated(
-              key: ObjectKey(language),
-              controller: controller,
-              itemCount: projectMessages.length,
-              itemBuilder: (context, index) {
-                return _LanguageMessageListItem(message: projectMessages[index]);
-              },
-              separatorBuilder: (context, index) {
-                return Container(color: Colors.grey.withOpacity(.2), height: .5);
+            child: CubitBuilder<MessagesViewModel, MessagesState>(
+              builder: (context, state) {
+                if (state.loadingProjectMessages || state.hasFailure) {
+                  return SizedBox.shrink();
+                }
+                return ListView.separated(
+                  key: ObjectKey(language),
+                  controller: controller,
+                  itemCount: state.projectMessages.length,
+                  itemBuilder: (context, index) {
+                    // TODO: parse language message value to this item
+                    return _LanguageMessageListItem();
+                  },
+                  separatorBuilder: (context, index) {
+                    return Container(color: Colors.grey.withOpacity(.2), height: .5);
+                  },
+                );
               },
             ),
           ),
@@ -73,9 +82,9 @@ class LanguageColumn extends StatelessWidget {
 }
 
 class _LanguageMessageListItem extends StatefulWidget {
-  final Message message;
+  final MessageValue messageValue;
 
-  const _LanguageMessageListItem({this.message});
+  const _LanguageMessageListItem({this.messageValue});
 
   @override
   __LanguageMessageListItemState createState() => __LanguageMessageListItemState();
