@@ -4,9 +4,9 @@
  */
 
 import 'package:app/src/application/projects/languages_view_model.dart';
+import 'package:app/src/application/projects/messages_view_model.dart';
 import 'package:app/src/domain/core/language.dart';
 import 'package:app/src/domain/core/message.dart';
-import 'package:app/src/domain/core/value_objects/unique_id.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_cubit/flutter_cubit.dart';
 import 'package:linked_scroll_controller/linked_scroll_controller.dart';
@@ -80,18 +80,23 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
               height: 40,
               child: ClipRRect(
                 borderRadius: BorderRadius.circular(4),
-                child: RaisedButton(
-                  color: context.primaryColor,
-                  child: Row(
-                    mainAxisSize: MainAxisSize.min,
-                    children: [
-                      Icon(Icons.add, color: Colors.white),
-                      Text('New Message', style: context.textTheme.caption.copyWith(
-                        color: Colors.white
-                      ),),
-                    ],
-                  ),
-                  onPressed: () {},
+                child: CubitBuilder<MessagesViewModel, MessagesState>(
+                  buildWhen: (prev, cur) => prev.loadingProjectMessages != cur.loadingProjectMessages,
+                  builder: (context, state) {
+                    return RaisedButton(
+                      color: context.primaryColor,
+                      child: Row(
+                        mainAxisSize: MainAxisSize.min,
+                        children: [
+                          Icon(Icons.add, color: Colors.white),
+                          Text('New Message', style: context.textTheme.caption.copyWith(
+                              color: Colors.white
+                          ),),
+                        ],
+                      ),
+                      onPressed: state.loadingProjectMessages ?  null : () { },
+                    );
+                  },
                 ),
               ),
             ),
@@ -101,7 +106,6 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
           child: Row(
             children: [
               MessagesColumn(
-                messages: _projectMessages,
                 controller: _messagesController,
               ),
               Expanded(

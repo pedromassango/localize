@@ -5,6 +5,7 @@
 
 import 'package:app/src/application/auth/auth_state_view_model.dart';
 import 'package:app/src/application/projects/languages_view_model.dart';
+import 'package:app/src/application/projects/messages_view_model.dart';
 import 'package:app/src/application/projects/projects_view_model.dart';
 import 'package:app/src/domain/core/value_objects/unique_id.dart';
 import 'package:app/src/presentation/common/app_logo.dart';
@@ -42,7 +43,10 @@ class _HomePageState extends State<HomePage> {
           // This makes sure the languages viewModel that depends on the
           // selected Project gets rebuilt every time the selected project
           // changes.
-          listener: (context, state) => context.cubit<LanguagesViewModel>().onSelectedProjectChanged(state.selectedProject),
+          listener: (context, state) {
+            context.cubit<LanguagesViewModel>().onSelectedProjectChanged(state.selectedProject);
+            context.cubit<MessagesViewModel>().onSelectedProjectChanged(state.selectedProject);
+          },
           builder: (context, state) {
             if (state.selectedProject != null) {
               return ProjectContentView(project: state.selectedProject);
