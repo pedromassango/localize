@@ -38,11 +38,23 @@ class MessagesViewModel extends Cubit<MessagesState> {
     await loadProjectMessages();
   }
 
-  Future loadProjectMessages() {
+  Future loadProjectMessages() async {
     ArgumentError.checkNotNull(state.selectedProject, 'selectedProject must not be null');
 
-    //emit(state.copyWith.call(loadingProjectMessages: true, projectMessages: []));
+    emit(state.copyWith.call(
+        loadingProjectMessages: true,
+        loadMessagesFailure: null,
+        projectMessages: [],
+    ));
 
-    // TODO: load project messages
+    final result = await _messagesRepository.getProjectMessages(state.selectedProject.id);
+
+    var newState = state.copyWith.call(loadingProjectMessages:  false);
+
+    newState = result.fold(
+          (l) => newState.copyWith.call(loadMessagesFailure: l),
+          (r) => newState.copyWith.call(projectMessages: r),
+    );
+    emit(newState);
   }
 }

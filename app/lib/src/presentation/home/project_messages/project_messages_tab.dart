@@ -22,21 +22,6 @@ class ProjectMessagesTab extends StatefulWidget {
 }
 
 class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
-  final _projectMessages = <Message> [
-    Message.withEmptyDescription('app_name', UniqueId.fromString('1')),
-    Message.withEmptyDescription('username', UniqueId.fromString('1')),
-    Message.withEmptyDescription('username', UniqueId.fromString('1')),
-    Message.withEmptyDescription('username', UniqueId.fromString('1')),
-    Message.withEmptyDescription('username', UniqueId.fromString('1')),
-    Message.withEmptyDescription('username', UniqueId.fromString('1')),
-    Message.withEmptyDescription('username', UniqueId.fromString('1')),
-    Message.withEmptyDescription('username', UniqueId.fromString('1')),
-    Message.withEmptyDescription('username', UniqueId.fromString('1')),
-    Message.withEmptyDescription('username', UniqueId.fromString('1')),
-    Message.withEmptyDescription('first_name', UniqueId.fromString('1')),
-    Message.withEmptyDescription('create_account', UniqueId.fromString('1')),
-    Message(name: 'last_name', description: 'A user\'s last name', projectId: UniqueId.fromString('1')),
-  ];
 
   LinkedScrollControllerGroup _controllersGroup;
   ScrollController _messagesController;
@@ -50,6 +35,10 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
     var controller = _controllersGroup.addAndGet();
     _controllersByLanguageId[lang.id] = controller;
     return controller;
+  }
+
+  void _onLoadLanguages(BuildContext context) {
+    context.cubit<LanguagesViewModel>().loadProjectLanguages();
   }
 
   @override
@@ -114,7 +103,11 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
                     if (state.isLoadingLanguages) {
                       return SizedBox.shrink();
                     } else if (state.loadLanguageFailure != null) {
-                      return SizedBox.shrink();
+                      return Center(
+                        child: ErrorViewWidget('Unable to load Languages.',
+                          onTryAgain: () => _onLoadLanguages(context),
+                        ),
+                      );
                     }
                     final languagesSize = state.languages.length;
                     return ListView.separated(
@@ -124,7 +117,6 @@ class _ProjectMessagesTabState extends State<ProjectMessagesTab> {
                         final language = state.languages[index];
                         return LanguageColumn(
                           language: language,
-                          projectMessages: _projectMessages,
                           controller: _getScrollController(language),
                         );
                       },
