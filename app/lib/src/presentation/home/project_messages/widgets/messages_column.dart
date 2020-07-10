@@ -40,7 +40,9 @@ class MessagesColumn extends StatelessWidget {
                     padding: const EdgeInsets.only(left: 16),
                     child: Text(
                       "Messages",
-                      style: TextStyle(color: Colors.white),
+                      style: context.textTheme.subtitle2.copyWith(
+                          color: Colors.white,
+                      ),
                     ),
                   ),
                 ),

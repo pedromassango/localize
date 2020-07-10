@@ -41,14 +41,12 @@ class LanguageColumn extends StatelessWidget {
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
                   Text(language.name,
-                    style: context.textTheme.headline6.copyWith(
-                        fontSize: 16,
+                    style: context.textTheme.subtitle2.copyWith(
                         color: context.primaryColor,
                     ),
                   ),
                   Text('${language.messagesCount}/173',
-                    style: context.textTheme.caption.copyWith(
-                    ),
+                    style: context.textTheme.caption,
                   ),
                 ],
               ),
