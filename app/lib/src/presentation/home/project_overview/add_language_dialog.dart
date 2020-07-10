@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 8/7/2020.
+ * Created by Pedro Massango on 10/7/2020.
  */
 
 import 'package:app/src/application/projects/languages_view_model.dart';
@@ -44,7 +44,7 @@ class _NewLanguageDialogState extends State<NewLanguageDialog> {
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             crossAxisAlignment: CrossAxisAlignment.start,
             children: [
-              Text('New Language',
+              Text('Support a new Language',
                 style: context.textTheme.headline5,
               ),
               DropdownButton<Language>(
@@ -65,23 +65,20 @@ class _NewLanguageDialogState extends State<NewLanguageDialog> {
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 16),
-                    child: SizedBox.fromSize(
-                      size: Size(120, 40),
-                      child: RaisedButton(
-                        child: Text('Cancel', style: TextStyle(color: Colors.white),),
-                        color: Colors.red,
-                        onPressed: () => Navigator.pop(context),
-                      ),
+                  SizedBox.fromSize(
+                    size: Size(120, 40),
+                    child: MaterialButton(
+                      child: Text('Cancel'),
+                      textColor: Colors.red,
+                      onPressed: () => Navigator.pop(context),
                     ),
                   ),
 
                   SizedBox.fromSize(
                     size: Size(120, 40),
-                    child: RaisedButton(
-                      child: Text('Save', style: TextStyle(color: Colors.white),),
-                      color: context.primaryColor,
+                    child: MaterialButton(
+                      child: Text('Save'),
+                      textColor: context.primaryColor,
                       onPressed: () => _onCreateLanguage(context),
                     ),
                   ),

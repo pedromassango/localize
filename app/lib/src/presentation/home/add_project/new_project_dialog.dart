@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 8/7/2020.
+ * Created by Pedro Massango on 10/7/2020.
  */
 
 import 'package:app/src/application/projects/projects_view_model.dart';
@@ -41,36 +41,32 @@ class _NewProjectDialogState extends State<NewProjectDialog> {
           child: Column(
             mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
-              Text('Give your project a name to get started.',
+              Text('What is the name of your App?',
                 style: context.textTheme.headline5,
               ),
               TextFormField(
                 controller: _projectNameController,
                 style: context.textTheme.headline6,
                 decoration: InputDecoration(
-                  hintText: 'App Name (2 characters min)',
+                  hintText: 'App name (2 characters min)',
                 ),
               ),
               Row(
                 mainAxisAlignment: MainAxisAlignment.end,
                 children: [
-                  Padding(
-                    padding: const EdgeInsets.only(right: 16),
-                    child: SizedBox.fromSize(
-                      size: Size(120, 40),
-                      child: RaisedButton(
-                        child: Text('Cancel', style: TextStyle(color: Colors.white),),
-                        color: Colors.red,
-                        onPressed: () => Navigator.pop(context),
-                      ),
-                    ),
-                  ),
-
                   SizedBox.fromSize(
                     size: Size(120, 40),
-                    child: RaisedButton(
-                      child: Text('Create Project', style: TextStyle(color: Colors.white),),
-                      color: context.primaryColor,
+                    child: MaterialButton(
+                      child: Text('Cancel'),
+                      textColor: Colors.red,
+                      onPressed: () => Navigator.pop(context),
+                    ),
+                  ),
+                  SizedBox.fromSize(
+                    size: Size(120, 40),
+                    child: MaterialButton(
+                      child: Text('Create'),
+                      textColor: context.primaryColor,
                       onPressed: () => _onCreateProject(context),
                     ),
                   ),

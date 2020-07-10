@@ -36,7 +36,7 @@ class _NewMessageDialogState extends State<NewMessageDialog> {
       body: Center(
         child: Container(
           height: 260,
-          width: 350,
+          width: 370,
           padding: EdgeInsets.all(16),
           decoration: BoxDecoration(
               color: Colors.white,
@@ -50,40 +50,37 @@ class _NewMessageDialogState extends State<NewMessageDialog> {
               Spacer(),
               TextFormField(
                 controller: _nameController,
-                style: context.textTheme.headline6,
                 decoration: InputDecoration(
                   labelText: 'message_name',
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
                 ),
               ),
               TextFormField(
                 controller: _descriptionController,
-                style: context.textTheme.headline6,
                 decoration: InputDecoration(
                   labelText: 'Message description',
+                  floatingLabelBehavior: FloatingLabelBehavior.always,
                 ),
               ),
               Padding(
-                padding: const EdgeInsets.only(top: 16),
+                padding: const EdgeInsets.only(top: 24),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.end,
                   children: [
-                    Padding(
-                      padding: const EdgeInsets.only(right: 16),
-                      child: SizedBox.fromSize(
-                        size: Size(120, 40),
-                        child: RaisedButton(
-                          child: Text('Cancel', style: TextStyle(color: Colors.white),),
-                          color: Colors.red,
-                          onPressed: () => Navigator.pop(context),
-                        ),
+                    SizedBox.fromSize(
+                      size: Size(120, 40),
+                      child: MaterialButton(
+                        textColor: Colors.red,
+                        child: Text('Cancel'),
+                        onPressed: () => context.pop(context),
                       ),
                     ),
 
                     SizedBox.fromSize(
                       size: Size(120, 40),
-                      child: RaisedButton(
-                        child: Text('Save', style: TextStyle(color: Colors.white)),
-                        color: context.primaryColor,
+                      child: MaterialButton(
+                        textColor: context.primaryColor,
+                        child: Text('Save'),
                         onPressed: () => _onCreateProject(context),
                       ),
                     ),
