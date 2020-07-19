@@ -2,6 +2,10 @@
 
 A web app localization tool for you Flutter apps.
 
+## This project was deprecated
+
+I'm not going to work on this anymore. You may need to update the project with your Firebase configurations for this project to work.
+
 ![Logo](screenshots/overview.png)
 
 ![Logo](screenshots/messages.png)
