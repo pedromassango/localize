@@ -1,6 +1,10 @@
-# app
+# Localize
 
-A new Flutter project.
+A web app localization tool for you Flutter apps.
+
+![Logo](screenshots/overview.png)
+
+![Logo](screenshots/messages.png)
 
 ## Getting Started
 

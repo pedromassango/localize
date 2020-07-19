@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 5/7/2020.
+ * Created by Pedro Massango on 19/7/2020.
  */
 
 import 'package:app/src/application/auth/auth_state_view_model.dart';
@@ -30,7 +30,7 @@ void main() async {
     preferences: authStatePreferences,
   );
 
-  await authStateViewModel.loadUserInfo();
+  //await authStateViewModel.loadUserInfo();
 
   runApp(ModularApp(
       module: AppModule(

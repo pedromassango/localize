@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 6/7/2020.
+ * Created by Pedro Massango on 19/7/2020.
  */
 
 import 'package:app/src/application/projects/languages_view_model.dart';
@@ -42,9 +42,9 @@ class App extends StatelessWidget {
         onGenerateRoute: Modular.generateRoute,
         home: Builder(
           builder: (context) {
-            if (authStateViewModel.state.isLoggedIn) {
+            //if (authStateViewModel.state.isLoggedIn) {
               return HomePage();
-            }
+            //}
             return AuthPage();
           },
         ),

@@ -29,7 +29,9 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    context.cubit<ProjectsViewModel>().loadUserProjects(context.cubit<AuthStateViewModel>().state.user.id);
+    //TODO: uncomment this
+    //context.cubit<ProjectsViewModel>().loadUserProjects(context.cubit<AuthStateViewModel>().state.user.id);
+    context.cubit<ProjectsViewModel>().loadUserProjects(UniqueId.fromString('1'));
   }
 
   @override

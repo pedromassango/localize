@@ -1,6 +1,6 @@
 /*
  * Copyright 2020 Pedro Massango. All rights reserved.
- * Created by Pedro Massango on 8/7/2020.
+ * Created by Pedro Massango on 19/7/2020.
  */
 
 import 'package:app/src/domain/core/project.dart';
@@ -24,7 +24,7 @@ class _ProjectContentViewState extends State<ProjectContentView>
 
   final _tabs = ['Overview', 'Messages'];
 
-  int _currentTabIndex = 0;
+  int _currentTabIndex = 1;
 
   @override
   Widget build(BuildContext context) {
